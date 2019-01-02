@@ -11,7 +11,7 @@ import Foundation
 class MemberRepository:Repository {
     
     func getAll() -> [Member] {
-        let members = [Player(fname: "Frederic", lname: "De Smet"), Member(fname: "Frederic", lname: "De Smet")]
+        let members = [Member(fname: "Frederic", lname: "De Smet"), Member(fname: "Frederic", lname: "De Smet")]
         return members
     }
     func get( identifier:Int ) -> Member? {

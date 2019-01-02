@@ -8,19 +8,24 @@
 
 import Foundation
 
-protocol Member: Equatable{
+class Member{
     
-    var id: String {get set}
+    init(fname: String, lname: String) {
+        self.fname = fname
+        self.lname = lname
+    }
     
-    var fname: String {get set}
+    var id: String = ""
+    
+    var fname: String = ""
     //lname
-    var lname: String {get set}
+    var lname: String = ""
     //email
-    var email: String? {get set}
+    var email: String?
     //birthday
-    var birthday: String? {get set}
+    var birthday: String?
     //address
-    var address: String? {get set}
+    var address: String?
     //telephone
-    var telephone: String? {get set}
+    var telephone: String?
 }
