@@ -39,7 +39,7 @@ class EventsViewController: UITableViewController {
         let event = events[indexPath.row]
         cell.titleLabel.text = event.title
         cell.dayDateLabel.text = String(calendar.component(.day, from: event.date))
-        cell.monthDateLabel.text = String(calendar.component(.month, from: event.date))
+        cell.monthDateLabel.text = event.date.monthShort.uppercased()
         return cell
     }
     

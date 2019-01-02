@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DB4325221DD67D9004901EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB4325121DD67D9004901EB /* Extensions.swift */; };
 		6DC2220321DB7BCD00975479 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2220221DB7BCD00975479 /* AppDelegate.swift */; };
 		6DC2220521DB7BCD00975479 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2220421DB7BCD00975479 /* ProfileViewController.swift */; };
 		6DC2220721DB7BCD00975479 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2220621DB7BCD00975479 /* EventsViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6DB4325121DD67D9004901EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6DC221FF21DB7BCD00975479 /* Teamstuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teamstuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC2220221DB7BCD00975479 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DC2220421DB7BCD00975479 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				6DC2222221DB814F00975479 /* MemberRepository.swift */,
 				6DC2222421DB81CB00975479 /* Repository.swift */,
 				6DC2224A21DBB51B00975479 /* EventRepository.swift */,
+				6DB4325121DD67D9004901EB /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				6DC2222121DB7F7400975479 /* Player.swift in Sources */,
 				6DC2224921DBB4F100975479 /* GameEvent.swift in Sources */,
 				6DC2221F21DB7E9700975479 /* Member.swift in Sources */,
+				6DB4325221DD67D9004901EB /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
