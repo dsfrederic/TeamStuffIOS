@@ -15,6 +15,14 @@ class EventsViewController: UITableViewController {
     
     var events:[Event] = []
     
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? AddEventViewController, let event = sourceViewController.event {
+            let newIndexPath = IndexPath(row: events.count, section: 0)
+            events.append(event)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
 //INIT
     
 //HELPER FUNCTIONS
@@ -25,7 +33,6 @@ class EventsViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return events.count
-
     }
     //configures and provides a cell to display for a given row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -34,12 +41,15 @@ class EventsViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         
+        //set cell values
         let calendar = Calendar.current
-        
         let event = events[indexPath.row]
         cell.titleLabel.text = event.title
         cell.dayDateLabel.text = String(calendar.component(.day, from: event.date))
         cell.monthDateLabel.text = event.date.monthShort.uppercased()
+        
+        
+        
         return cell
     }
     
