@@ -25,6 +25,16 @@ class EventsViewController: UITableViewController {
     
 //INIT
     
+//LIFECYCLE
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.clearsSelectionOnViewWillAppear = false
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        fetchEvents()
+    }
+    
 //HELPER FUNCTIONS
     
     //required for tableview
@@ -57,18 +67,6 @@ class EventsViewController: UITableViewController {
 //NAVIGATION
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-    }
-    
-    
-    
-//LIFECYCLE
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.clearsSelectionOnViewWillAppear = false
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        fetchEvents()
     }
     
 //PERSISTENCE
