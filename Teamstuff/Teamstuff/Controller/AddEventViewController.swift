@@ -13,20 +13,19 @@ import UIKit
 class AddEventViewController: FormViewController {
 //    TODO:
 //    Show error when event is not saved because of validation
-//    * implement other event values
-//          -creator/admin
-//          -role restriction
-//    *form validation
-//          required
-//          date in future
-//          new
-//          start < end date
-    //    Problem: save button is enabled when all fields are empty
-//    Save button should only be enabled when all fields are valid
-//
+//    Lineup each player only once
+    
     var event: Event?
     var availablePlayers = ["Jos", "Mark", "Maurice", "Xavier", "Louis", "Els"]
-    var positions = ["Loosehead prop", "Hooker", "Tighthead Prop", "Open Lock", "closed Lock", "Open Flanker"]
+//    var chosenPlayers = Array<String>()
+//    var notChosenPlayers: Array<String> {
+//        set { }
+//        get { return availablePlayers.filter({ (player) -> Bool in
+//            return !chosenPlayers.contains(player)
+//        }) }
+//    }
+    
+    var positions = ["Loosehead prop", "Hooker", "Tighthead Prop"]
     
     struct FormItems {
         static let name = "name"
@@ -92,10 +91,109 @@ class AddEventViewController: FormViewController {
                 self.updateSaveButtonState()
             }
             
+//        <<< SwitchRow("All-day") {
+//            $0.title = $0.tag
+//            }.onChange { [weak self] row in
+//                let startDate: DateTimeInlineRow! = self?.form.rowBy(tag: "Starts")
+//                let endDate: DateTimeInlineRow! = self?.form.rowBy(tag: "Ends")
+//
+//                if row.value ?? false {
+//                    startDate.dateFormatter?.dateStyle = .medium
+//                    startDate.dateFormatter?.timeStyle = .none
+//                    endDate.dateFormatter?.dateStyle = .medium
+//                    endDate.dateFormatter?.timeStyle = .none
+//                }
+//                else {
+//                    startDate.dateFormatter?.dateStyle = .short
+//                    startDate.dateFormatter?.timeStyle = .short
+//                    endDate.dateFormatter?.dateStyle = .short
+//                    endDate.dateFormatter?.timeStyle = .short
+//                }
+//                startDate.updateCell()
+//                endDate.updateCell()
+//                startDate.inlineRow?.updateCell()
+//                endDate.inlineRow?.updateCell()
+//            }
+//
+//            <<< DateTimeInlineRow("Starts") {
+//                $0.title = $0.tag
+//                $0.value = Date().addingTimeInterval(60*60*24)
+//                }
+//                .onChange { [weak self] row in
+//                    let endRow: DateTimeInlineRow! = self?.form.rowBy(tag: "Ends")
+//                    if row.value?.compare(endRow.value!) == .orderedDescending {
+//                        endRow.value = Date(timeInterval: 60*60*24, since: row.value!)
+//                        endRow.cell!.backgroundColor = .white
+//                        endRow.updateCell()
+//                    }
+//                }
+//                .onExpandInlineRow { [weak self] cell, row, inlineRow in
+//                    inlineRow.cellUpdate() { cell, row in
+//                        let allRow: SwitchRow! = self?.form.rowBy(tag: "All-day")
+//                        if allRow.value ?? false {
+//                            cell.datePicker.datePickerMode = .date
+//                        }
+//                        else {
+//                            cell.datePicker.datePickerMode = .dateAndTime
+//                        }
+//                    }
+//                    let color = cell.detailTextLabel?.textColor
+//                    row.onCollapseInlineRow { cell, _, _ in
+//                        cell.detailTextLabel?.textColor = color
+//                    }
+//                    cell.detailTextLabel?.textColor = cell.tintColor
+//            }
+//
+//            <<< DateTimeInlineRow("Ends"){
+//                $0.title = $0.tag
+//                $0.value = Date().addingTimeInterval(60*60*25)
+//                }
+//                .onChange { [weak self] row in
+//                    let startRow: DateTimeInlineRow! = self?.form.rowBy(tag: "Starts")
+//                    if row.value?.compare(startRow.value!) == .orderedAscending {
+//                        row.cell!.backgroundColor = .red
+//                    }
+//                    else{
+//                        row.cell!.backgroundColor = .white
+//                    }
+//                    row.updateCell()
+//                }
+//                .onExpandInlineRow { [weak self] cell, row, inlineRow in
+//                    inlineRow.cellUpdate { cell, dateRow in
+//                        let allRow: SwitchRow! = self?.form.rowBy(tag: "All-day")
+//                        if allRow.value ?? false {
+//                            cell.datePicker.datePickerMode = .date
+//                        }
+//                        else {
+//                            cell.datePicker.datePickerMode = .dateAndTime
+//                        }
+//                    }
+//                    let color = cell.detailTextLabel?.textColor
+//                    row.onCollapseInlineRow { cell, _, _ in
+//                        cell.detailTextLabel?.textColor = color
+//                    }
+//                    cell.detailTextLabel?.textColor = cell.tintColor
+//            }
+            
             // Start date
             <<< DateTimeRow(FormItems.dateStart) { row in
                 row.title = "Start date"
                 row.add(rule: RuleRequired())
+                let afterEndDateRule = RuleClosure<Date> { rowValue in
+                    let endDate = (self.form.rowBy(tag: FormItems.dateEnd) as? DateTimeRow)?.value
+                    if rowValue != nil, endDate != nil {
+                        return endDate! > rowValue! ? nil : ValidationError(msg: "Start date should be before end date")
+                    }
+                    return nil
+                }
+                row.add(rule: afterEndDateRule)
+                let dateInTheFuture = RuleClosure<Date> { rowValue in
+                    if rowValue != nil {
+                        return rowValue! > Date() ? nil : ValidationError(msg: "Date should be in the future")
+                    }
+                    return nil
+                }
+                row.add(rule: dateInTheFuture)
                 row.dateFormatter = formatter
             }
             .cellUpdate { cell, row in
@@ -107,6 +205,21 @@ class AddEventViewController: FormViewController {
             <<< DateTimeRow(FormItems.dateEnd) { row in
                 row.title = "End date"
                 row.add(rule: RuleRequired())
+                let afterStartDateRule = RuleClosure<Date> { rowValue in
+                    let startDate = (self.form.rowBy(tag: FormItems.dateStart) as? DateTimeRow)?.value
+                    if rowValue != nil, startDate != nil {
+                        return startDate! < rowValue! ? nil : ValidationError(msg: "End date should be after start date")
+                    }
+                    return nil
+                }
+                row.add(rule: afterStartDateRule)
+                let dateInTheFuture = RuleClosure<Date> { rowValue in
+                    if rowValue != nil {
+                        return rowValue! > Date() ? nil : ValidationError(msg: "Date should be in the future")
+                    }
+                    return nil
+                }
+                row.add(rule: dateInTheFuture)
                 row.dateFormatter = formatter
             }
             .cellUpdate { cell, row in
@@ -119,11 +232,10 @@ class AddEventViewController: FormViewController {
             +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete, .Reorder],
                                    header: "Lineup",
                                    footer: "Click on add to add a player. Swipe to the right to delete a position") {
-                                    
-                                    $0.hidden = Condition.function([FormItems.type], { form in
-                                        return !((form.rowBy(tag: FormItems.type) as? PickerInputRow)?.value == "Game")
-                                    })
-                                    
+                $0.hidden = Condition.function([FormItems.type], { form in
+                    !((form.rowBy(tag: FormItems.type) as? PickerInputRow)?.value == "Game")
+                })
+                
                 $0 <<< SwitchRow("SwitchRow") { row in // initializer
                     row.title = "Lineup is private"
                 }.onChange { row in
@@ -139,7 +251,7 @@ class AddEventViewController: FormViewController {
                         $0.options = self.availablePlayers
                     }
                 }
-                //default positions by team
+                // default positions by team
                 for position in positions {
                     $0 <<< PushRow<String> {
                         $0.title = position
@@ -176,5 +288,4 @@ class AddEventViewController: FormViewController {
                           , title: valuesDictionary[FormItems.name] as! String)
         }
     }
-
 }
