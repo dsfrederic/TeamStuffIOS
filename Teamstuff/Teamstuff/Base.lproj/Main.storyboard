@@ -180,7 +180,11 @@
                         <viewLayoutGuide key="safeArea" id="gGU-9P-vaK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add event" id="zwe-wR-erd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rQ8-hf-m6Y"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rQ8-hf-m6Y">
+                            <connections>
+                                <segue destination="iX8-aM-qJW" kind="unwind" unwindAction="unwindToMealListWithSender:" id="xv6-ge-MjP"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="pXU-lh-cpL">
                             <connections>
                                 <segue destination="iX8-aM-qJW" kind="unwind" unwindAction="unwindToMealListWithSender:" id="ESP-2Q-mLN"/>

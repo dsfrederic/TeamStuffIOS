@@ -13,6 +13,7 @@ class EventsViewController: UITableViewController {
 //PROPERTIES
     lazy var eventsRepo: EventRepository? = EventRepository()
     
+    //SORT BY START DATE
     var events:[Event] = []
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
