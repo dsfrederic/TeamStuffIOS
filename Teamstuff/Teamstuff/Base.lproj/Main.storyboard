@@ -182,12 +182,12 @@
                     <navigationItem key="navigationItem" title="Add event" id="zwe-wR-erd">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rQ8-hf-m6Y">
                             <connections>
-                                <segue destination="iX8-aM-qJW" kind="unwind" unwindAction="unwindToMealListWithSender:" id="xv6-ge-MjP"/>
+                                <segue destination="iX8-aM-qJW" kind="unwind" unwindAction="unwindToEventListWithSender:" id="pUK-zm-Zrz"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="pXU-lh-cpL">
                             <connections>
-                                <segue destination="iX8-aM-qJW" kind="unwind" unwindAction="unwindToMealListWithSender:" id="ESP-2Q-mLN"/>
+                                <segue destination="iX8-aM-qJW" kind="unwind" unwindAction="unwindToEventListWithSender:" id="2Ze-Sa-S3H"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

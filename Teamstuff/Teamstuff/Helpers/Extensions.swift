@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Eureka
 
 extension Date {
     var month: String {
@@ -19,5 +20,18 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
         return String(dateFormatter.string(from: self).prefix(3))
+    }
+}
+
+//checks if form is touched or not
+extension Form {
+    
+    public func isClean() ->Bool {
+        for row in rows {
+            if row.wasChanged {
+                return false
+            }
+        }
+        return true
     }
 }

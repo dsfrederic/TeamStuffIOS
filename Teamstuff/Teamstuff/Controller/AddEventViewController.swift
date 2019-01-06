@@ -46,6 +46,8 @@ class AddEventViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.updateSaveButtonState()
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMMM, HH:mm"
 
@@ -54,42 +56,62 @@ class AddEventViewController: FormViewController {
                 row.title = "Name"
                 row.placeholder = "Event name"
                 row.add(rule: RuleRequired())
-                row.validationOptions = .validatesOnChange
+                row.validationOptions = .validatesOnBlur
             }
             .cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .red
-                        self.saveButton.isEnabled = false
-                    }else {
-                        self.saveButton.isEnabled = true
-                    }
+                cell.textLabel?.textColor = !row.isValid && row.wasBlurred ? .red : .black
+                    self.updateSaveButtonState()
             }
             
             <<< TextAreaRow(FormItems.description) { row in
                 row.title = "Description"
                 row.placeholder = "Write here an optional description"
             }
+                .cellUpdate { cell, row in
+                    cell.textLabel?.textColor = !row.isValid && row.wasBlurred ? .red : .black
+                    self.updateSaveButtonState()
+            }
             <<< TextRow(FormItems.address) { row in
                 row.title = "Address"
                 row.placeholder = "Write here"
+            }
+                .cellUpdate { cell, row in
+                        cell.titleLabel?.textColor = !row.isValid && row.wasBlurred ? .red : .black
+                    
+                    self.updateSaveButtonState()
             }
             <<< PickerInputRow<String>(FormItems.type) { row in
                 row.title = "Type"
                 row.options = ["Game", "Training", "Other"]
                 row.add(rule: RuleRequired())
-        
+            }
+                .cellUpdate { cell, row in
+                    if(!row.isValid && row.wasBlurred){
+                        cell.textLabel?.textColor = .red
+                    }
+                    self.updateSaveButtonState()
             }
             <<< DateTimeRow(FormItems.dateStart) { row in
                 row.title = "Start date"
                 row.add(rule: RuleRequired())
                 row.dateFormatter = formatter
-                
-                
+            }
+                .cellUpdate { cell, row in
+                    if(!row.isValid && row.wasBlurred){
+                        cell.textLabel?.textColor = .red
+                    }
+                    self.updateSaveButtonState()
             }
             <<< DateTimeRow(FormItems.dateEnd) { row in
                 row.title = "End date"
                 row.add(rule: RuleRequired())
                 row.dateFormatter = formatter
+            }
+                .cellUpdate { cell, row in
+                    if(!row.isValid && row.wasBlurred){
+                        cell.textLabel?.textColor = .red
+                    }
+                    self.updateSaveButtonState()
             }
             
         //TODO IF TYPE IS GAME
@@ -125,7 +147,13 @@ class AddEventViewController: FormViewController {
     }
     
 //   Helpers
-    
+    private func updateSaveButtonState(){
+        if form.isClean() {
+             saveButton.isEnabled = false
+        } else if(form.validate().isEmpty){
+            saveButton.isEnabled = true
+        }
+    }
     
 // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -135,7 +163,7 @@ class AddEventViewController: FormViewController {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        //CHECK IF FORM IS VALID
+        //ADDITIONAL CHECK IF FORM IS VALID
         if form.validate().isEmpty {
             let valuesDictionary = form.values()
             event = Event(date: valuesDictionary[FormItems.dateStart] as! Date

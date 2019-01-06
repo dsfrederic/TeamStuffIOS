@@ -13,10 +13,10 @@ class EventsViewController: UITableViewController {
 //PROPERTIES
     lazy var eventsRepo: EventRepository? = EventRepository()
     
-    //SORT BY START DATE
+    //TODO: SORT BY START DATE
     var events:[Event] = []
     
-    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+    @IBAction func unwindToEventList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddEventViewController, let event = sourceViewController.event {
             let newIndexPath = IndexPath(row: events.count, section: 0)
             events.append(event)
