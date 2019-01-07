@@ -63,6 +63,32 @@ class EventsViewController: UITableViewController {
         
         return cell
     }
+    //Set swipe actions
+    @available(iOS 11.0, *)
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let availableAction = UIContextualAction(style: .destructive, title: "Available") { (action, view, handler) in
+            //TODO IMPLEMENT
+            print("AVAILABLE Tapped")
+        }
+        availableAction.backgroundColor = .green
+        let configuration = UISwipeActionsConfiguration(actions: [availableAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
+    
+    @available(iOS 11.0, *)
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let notAvailableAction = UIContextualAction(style: .destructive, title: "Not Available") { (action, view, handler) in
+            //TODO IMPLEMENT
+            print("NOT AVAILABLE Action Tapped")
+        }
+        notAvailableAction.backgroundColor = .red
+        let configuration = UISwipeActionsConfiguration(actions: [notAvailableAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
     
     
 //NAVIGATION

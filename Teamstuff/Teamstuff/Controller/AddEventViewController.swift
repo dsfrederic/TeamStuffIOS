@@ -13,17 +13,17 @@ import UIKit
 class AddEventViewController: FormViewController {
 //    TODO:
 //    Show error when event is not saved because of validation
-//    Lineup each player only once
+    //    Lineup each player only once: Chosenplayers are not removed
     
     var event: Event?
     var availablePlayers = ["Jos", "Mark", "Maurice", "Xavier", "Louis", "Els"]
-//    var chosenPlayers = Array<String>()
-//    var notChosenPlayers: Array<String> {
-//        set { }
-//        get { return availablePlayers.filter({ (player) -> Bool in
-//            return !chosenPlayers.contains(player)
-//        }) }
-//    }
+    var chosenPlayers = Array<String>()
+    var notChosenPlayers: Array<String> {
+        set { }
+        get { return availablePlayers.filter({ (player) -> Bool in
+            return !chosenPlayers.contains(player)
+        }) }
+    }
     
     var positions = ["Loosehead prop", "Hooker", "Tighthead Prop"]
     
@@ -248,14 +248,29 @@ class AddEventViewController: FormViewController {
                         // TODO: EDITABLE LABEL
                         $0.title = "\(index + 1)"
                         // AVAILABLE PLAYERS
-                        $0.options = self.availablePlayers
+                        $0.options = self.notChosenPlayers
+                        }
+                        .onChange { row in
+                            if(row.value != nil && !self.chosenPlayers.contains(row.value!)){
+                                self.chosenPlayers.append(row.value!)
+                            }
+                        }
+                        .onCellSelection{ cell, row in
+                            row.options = self.notChosenPlayers
                     }
+                    
                 }
                 // default positions by team
-                for position in positions {
+                for position in self.positions {
                     $0 <<< PushRow<String> {
                         $0.title = position
-                        $0.options = self.availablePlayers
+                        $0.options = self.notChosenPlayers
+                    }.onChange { row in
+                            if(row.value != nil && !self.chosenPlayers.contains(row.value!)){
+                                self.chosenPlayers.append(row.value!)
+                            }
+                        }.onCellSelection{ cell, row in
+                            row.options = self.notChosenPlayers
                     }
                 }
             }
