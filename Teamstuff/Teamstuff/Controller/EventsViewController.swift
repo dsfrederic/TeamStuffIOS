@@ -13,7 +13,7 @@ class EventsViewController: UITableViewController {
 //PROPERTIES
     lazy var eventsRepo: EventRepository? = EventRepository()
     
-    //TODO: SORT BY START DATE
+    //TODO: SORT BY START DATE and SKIPPED PAST EVENTS
     var events:[Event] = []
     
     @IBAction func unwindToEventList(sender: UIStoryboardSegue) {
@@ -55,6 +55,7 @@ class EventsViewController: UITableViewController {
         //set cell values
         let calendar = Calendar.current
         let event = events[indexPath.row]
+        cell.event = event
         cell.titleLabel.text = event.title
         cell.dayDateLabel.text = String(calendar.component(.day, from: event.date))
         cell.monthDateLabel.text = event.date.monthShort.uppercased()
@@ -93,7 +94,16 @@ class EventsViewController: UITableViewController {
     
 //NAVIGATION
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "toEventDetailView"
+        {
+            print("executed")
+            let cell: EventTableViewCell? = sender as? EventTableViewCell
+            //CLEAN CODE???
+            let vc = segue.destination.children[0] as? EventDetailViewController
+            vc!.event = cell!.event
+            print(cell!.event)
+            print(vc!.event)
+        }
     }
     
 //PERSISTENCE

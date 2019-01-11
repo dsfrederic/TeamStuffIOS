@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D20E09321E89C1900E8A12E /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20E09221E89C1900E8A12E /* EventDetailViewController.swift */; };
 		6DB4325221DD67D9004901EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB4325121DD67D9004901EB /* Extensions.swift */; };
 		6DB4325421DD7287004901EB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB4325321DD7287004901EB /* AddEventViewController.swift */; };
 		6DC2220321DB7BCD00975479 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2220221DB7BCD00975479 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		2E49B50635F388864DA5C0E4 /* Pods_Teamstuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teamstuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D20E09221E89C1900E8A12E /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		6DB4325121DD67D9004901EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6DB4325321DD7287004901EB /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		6DC221FF21DB7BCD00975479 /* Teamstuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teamstuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 				6DC2220621DB7BCD00975479 /* EventsViewController.swift */,
 				6DC2224421DB9DE500975479 /* TeamViewController.swift */,
 				6DB4325321DD7287004901EB /* AddEventViewController.swift */,
+				6D20E09221E89C1900E8A12E /* EventDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				6DC2224721DBB45A00975479 /* Event.swift in Sources */,
 				6DC2224B21DBB51B00975479 /* EventRepository.swift in Sources */,
 				6DC2224521DB9DE500975479 /* TeamViewController.swift in Sources */,
+				6D20E09321E89C1900E8A12E /* EventDetailViewController.swift in Sources */,
 				6DC2222321DB814F00975479 /* MemberRepository.swift in Sources */,
 				6DC2222521DB81CB00975479 /* Repository.swift in Sources */,
 				6DC2220321DB7BCD00975479 /* AppDelegate.swift in Sources */,
