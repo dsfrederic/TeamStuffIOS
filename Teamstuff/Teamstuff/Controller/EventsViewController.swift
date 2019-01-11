@@ -13,7 +13,7 @@ class EventsViewController: UITableViewController {
 //PROPERTIES
     lazy var eventsRepo: EventRepository? = EventRepository()
     
-    //TODO: SORT BY START DATE and SKIPPED PAST EVENTS
+    //TODO: START ON FIRST EVENT IN THE FUTURE
     var events:[Event] = []
     
     @IBAction func unwindToEventList(sender: UIStoryboardSegue) {
