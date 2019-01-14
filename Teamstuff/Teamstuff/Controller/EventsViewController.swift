@@ -85,7 +85,6 @@ class EventsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let notAvailableAction = UIContextualAction(style: .destructive, title: "Not Available") { (action, view, handler) in
-            print("NOT AVAILABLE swipe")
             let currentCell = tableView.cellForRow(at: indexPath) as! EventTableViewCell
             //TODO ICON
             currentCell.statusLabel.text = "Not available"
@@ -108,7 +107,7 @@ class EventsViewController: UITableViewController {
             print("executed")
             let cell: EventTableViewCell? = sender as? EventTableViewCell
             //CLEAN CODE???
-            let vc = segue.destination.children[0] as? EventDetailViewController
+            let vc = segue.destination as? EventDetailViewController
             vc!.event = cell!.event
             print(cell!.event)
             print(vc!.event)

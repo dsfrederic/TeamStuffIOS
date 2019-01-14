@@ -33,10 +33,11 @@ class EventDetailViewController: UIViewController {
         {
             let vc = segue.destination as? PlayerStatusTableViewController
             
-            var availablePlayersId = Array(event.playerStatus.filter{$0.value == true}.keys)
+            let availablePlayersId = Array(event.playerStatus.filter{$0.value == true}.keys)
+            print(availablePlayersId)
             vc!.availablePlayers = membersRepo!.getNamesById(identifiers: availablePlayersId)
-            
-            var notAvailablePlayersId = Array(event.playerStatus.filter{$0.value == false}.keys)
+            let notAvailablePlayersId = Array(event.playerStatus.filter{$0.value == false}.keys)
+            print(notAvailablePlayersId)
             vc!.notAvailablePlayers = membersRepo!.getNamesById(identifiers: notAvailablePlayersId)
             
         }
