@@ -238,7 +238,7 @@
             </objects>
             <point key="canvasLocation" x="2279" y="-406"/>
         </scene>
-        <!--Event Detail View Controller-->
+        <!--Event-->
         <scene sceneID="wvA-PS-0Gj">
             <objects>
                 <viewController id="gbM-9W-HjQ" customClass="EventDetailViewController" customModule="Teamstuff" customModuleProvider="target" sceneMemberID="viewController">
@@ -247,27 +247,62 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventDetail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NB-bR-5E0">
-                                <rect key="frame" x="144" y="323" width="87" height="21"/>
+                                <rect key="frame" x="144" y="98" width="87" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7M1-oZ-cKf">
+                                <rect key="frame" x="0.0" y="259" width="375" height="359"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="uv2-LD-iH1" kind="embed" identifier="playerStatusTable" id="gtN-Jm-mCW"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5NB-bR-5E0" firstAttribute="centerY" secondItem="xlm-Tu-rwU" secondAttribute="centerY" id="H0k-rN-9EX"/>
+                            <constraint firstItem="5NB-bR-5E0" firstAttribute="centerY" secondItem="xlm-Tu-rwU" secondAttribute="centerY" constant="-225" id="H0k-rN-9EX"/>
                             <constraint firstItem="5NB-bR-5E0" firstAttribute="centerX" secondItem="xlm-Tu-rwU" secondAttribute="centerX" id="cNW-hZ-mSu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z2W-bJ-dhy"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vOt-Ov-ghg"/>
+                    <navigationItem key="navigationItem" title="Event" id="vOt-Ov-ghg"/>
                     <connections>
                         <outlet property="titleLabel" destination="5NB-bR-5E0" id="4P7-ld-VIG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFY-sy-yhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3004" y="281"/>
+            <point key="canvasLocation" x="3004" y="280.20989505247377"/>
+        </scene>
+        <!--Player Status Table View Controller-->
+        <scene sceneID="hk4-OS-JEL">
+            <objects>
+                <tableViewController id="uv2-LD-iH1" customClass="PlayerStatusTableViewController" customModule="Teamstuff" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NYW-0t-TtJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="359"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerStatus" id="Wwe-bV-IZg">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wwe-bV-IZg" id="JDG-Gb-LtC">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uv2-LD-iH1" id="LVd-4G-AXe"/>
+                            <outlet property="delegate" destination="uv2-LD-iH1" id="srB-xg-sEV"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nXM-Uc-xvO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4180" y="280"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WvF-I0-vM4">

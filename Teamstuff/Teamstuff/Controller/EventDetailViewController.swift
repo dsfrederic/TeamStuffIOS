@@ -10,26 +10,38 @@ import UIKit
 
 class EventDetailViewController: UIViewController {
     
+    lazy var membersRepo: MemberRepository? = MemberRepository()
+    
     var event: Event = Event(date: Date.init(), title: "Dummy")
     var text: String = ""
     @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         titleLabel.text = event.title
-        // Do any additional setup after loading the view.
+        
     }
     
 
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "playerStatusTable"
+        {
+            let vc = segue.destination as? PlayerStatusTableViewController
+            
+            var availablePlayersId = Array(event.playerStatus.filter{$0.value == true}.keys)
+            vc!.availablePlayers = membersRepo!.getNamesById(identifiers: availablePlayersId)
+            
+            var notAvailablePlayersId = Array(event.playerStatus.filter{$0.value == false}.keys)
+            vc!.notAvailablePlayers = membersRepo!.getNamesById(identifiers: notAvailablePlayersId)
+            
+        }
     }
-    */
+    
+    
 
 }

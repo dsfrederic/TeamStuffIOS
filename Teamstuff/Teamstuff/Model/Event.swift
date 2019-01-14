@@ -14,6 +14,8 @@ class Event {
         self.title = title
     }
     
+    var playerStatus: [String :Bool] = [:]
+    
     var date: Date
     var title: String
     var description: String?

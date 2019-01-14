@@ -15,8 +15,22 @@ class MemberRepository:Repository {
         return members
     }
     func get( identifier:Int ) -> Member? {
+        //TODO
         return Member(fname: "Frederic", lname: "De Smet")
     }
+    
+    func getNamesById( identifiers:[String] ) ->  [String] {
+        let members = ["Frederic","Jean", "Marc"]
+        return members
+    }
+    
+    func getCurrentUser() -> Member {
+        //TODO
+        let currentUser = Member(fname: "Frederic", lname: "De Smet")
+        currentUser.id = "idFredericDesmet"
+        return currentUser
+    }
+    
     func create( a:Member ) -> Bool {
         return true
     }

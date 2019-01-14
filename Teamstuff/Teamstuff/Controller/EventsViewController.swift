@@ -12,6 +12,7 @@ class EventsViewController: UITableViewController {
     
 //PROPERTIES
     lazy var eventsRepo: EventRepository? = EventRepository()
+    lazy var membersRepo: MemberRepository? = MemberRepository()
     
     //TODO: START ON FIRST EVENT IN THE FUTURE
     var events:[Event] = []
@@ -60,8 +61,6 @@ class EventsViewController: UITableViewController {
         cell.dayDateLabel.text = String(calendar.component(.day, from: event.date))
         cell.monthDateLabel.text = event.date.monthShort.uppercased()
         
-        
-        
         return cell
     }
     //Set swipe actions
@@ -69,8 +68,12 @@ class EventsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let availableAction = UIContextualAction(style: .destructive, title: "Available") { (action, view, handler) in
-            //TODO IMPLEMENT
-            print("AVAILABLE Tapped")
+            
+            let currentCell = tableView.cellForRow(at: indexPath) as! EventTableViewCell
+            //TODO ICON
+            currentCell.statusLabel.text = "Available"
+            currentCell.statusLabel.textColor = .green
+            currentCell.event.playerStatus[self.membersRepo!.getCurrentUser().id] = true
         }
         availableAction.backgroundColor = .green
         let configuration = UISwipeActionsConfiguration(actions: [availableAction])
@@ -82,8 +85,13 @@ class EventsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let notAvailableAction = UIContextualAction(style: .destructive, title: "Not Available") { (action, view, handler) in
-            //TODO IMPLEMENT
-            print("NOT AVAILABLE Action Tapped")
+            print("NOT AVAILABLE swipe")
+            let currentCell = tableView.cellForRow(at: indexPath) as! EventTableViewCell
+            //TODO ICON
+            currentCell.statusLabel.text = "Not available"
+            currentCell.statusLabel.textColor = .red
+            currentCell.event.playerStatus[self.membersRepo!.getCurrentUser().id] = false
+            
         }
         notAvailableAction.backgroundColor = .red
         let configuration = UISwipeActionsConfiguration(actions: [notAvailableAction])
