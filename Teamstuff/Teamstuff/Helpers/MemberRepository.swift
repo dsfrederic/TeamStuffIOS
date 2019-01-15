@@ -20,7 +20,7 @@ class MemberRepository:Repository {
     }
     
     func getNamesById( identifiers:[String] ) ->  [String] {
-        let members = ["Frederic","Jean", "Marc"]
+        let members = ["Frederic","Jean", "Marc","Jean", "Marc","Jean", "Marc","Jean", "Marc","Jean", "Marc","Jean", "Marc","Jean", "Marc","Jean", "Marc"]
         return members
     }
     

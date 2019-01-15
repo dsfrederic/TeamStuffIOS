@@ -10,32 +10,23 @@ import Foundation
 
 class EventRepository: Repository{
     func getAll() -> [Event] {
-        let today = Date.init()
-        
         
         var events = [
-            Event(date: today,
-                  title: "EventTitle"),
-            Event(date: Calendar.current.date(byAdding: .day, value: 1, to: today)!,
-                  title: "EventTitle"),
-            Event(date: Calendar.current.date(byAdding: .day, value: 2, to: today)!,
-                  title: "EventTitle"),
-            Event(date: Calendar.current.date(byAdding: .day, value: 3, to: today)!,
-                  title: "EventTitle"),
-            Event(date: Calendar.current.date(byAdding: .day, value: -3, to: today)!,
-                  title: "EventTitle"),
-            Event(date: Calendar.current.date(byAdding: .day, value: -2, to: today)!,
-                  title: "EventTitle"),
-            Event(date: Calendar.current.date(byAdding: .day, value: -1, to: today)!,
-                  title: "EventTitle")
+            Event(),
+            Event(),
+            Event(),
+            Event(),
+            Event(),
+            Event(),
+            Event()
         ]
         
         events = events.sorted(by: {
-            $1.date.compare($0.date) == .orderedDescending
+            $1.startDate.compare($0.startDate) == .orderedDescending
         })
         
         events = events.filter{
-            if($0.date >= Date.init()){
+            if($0.startDate >= Date.init()){
                 return true
             } else {
                 return false
@@ -45,7 +36,7 @@ class EventRepository: Repository{
         return events
     }
     func get( identifier:Int ) -> Event? {
-        return Event(date: Date.init(), title: "EventTitle")
+        return Event()
     }
     func create( a:Event ) -> Bool {
         return true

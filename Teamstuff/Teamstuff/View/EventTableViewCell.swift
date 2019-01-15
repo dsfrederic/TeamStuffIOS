@@ -9,12 +9,14 @@
 import UIKit
 
 class EventTableViewCell: UITableViewCell {
-    var event: Event = Event(date: Date.init(), title: "DummyEvent")
+    var event: Event = Event()
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dayDateLabel: UILabel!
     @IBOutlet weak var monthDateLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

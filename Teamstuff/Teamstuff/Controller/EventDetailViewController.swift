@@ -12,15 +12,17 @@ class EventDetailViewController: UIViewController {
     
     lazy var membersRepo: MemberRepository? = MemberRepository()
     
-    var event: Event = Event(date: Date.init(), title: "Dummy")
+    var event: Event = Event()
     var text: String = ""
-    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        titleLabel.text = event.title
-        
+        self.title = event.title
+//        self.dateLabel.text = event.date
+        self.descriptionLabel.text = event.description
     }
     
 
@@ -32,6 +34,8 @@ class EventDetailViewController: UIViewController {
         if segue.identifier == "playerStatusTable"
         {
             let vc = segue.destination as? PlayerStatusTableViewController
+            
+            vc!.view.translatesAutoresizingMaskIntoConstraints = false
             
             let availablePlayersId = Array(event.playerStatus.filter{$0.value == true}.keys)
             print(availablePlayersId)

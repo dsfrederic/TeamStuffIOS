@@ -32,7 +32,7 @@ class AddEventViewController: FormViewController {
         static let type = "type"
         static let dateStart = "dateStart"
         static let dateEnd = "dateEnd"
-        static let address = "address"
+        static let location = "location"
         static let description = "description"
     }
     
@@ -71,8 +71,8 @@ class AddEventViewController: FormViewController {
             }
             
             // Address
-            <<< TextRow(FormItems.address) { row in
-                row.title = "Address"
+            <<< TextRow(FormItems.location) { row in
+                row.title = "Location"
                 row.placeholder = "Write here"
             }
             .cellUpdate { cell, row in
@@ -299,8 +299,9 @@ class AddEventViewController: FormViewController {
         // ADDITIONAL CHECK IF FORM IS VALID
         if form.validate().isEmpty {
             let valuesDictionary = form.values()
-            event = Event(date: valuesDictionary[FormItems.dateStart] as! Date
-                          , title: valuesDictionary[FormItems.name] as! String)
+            
+            //EVENT UITBREIDEN!
+            event = Event(startDate: valuesDictionary[FormItems.dateStart] as! Date, endDate: valuesDictionary[FormItems.dateEnd] as! Date, title: valuesDictionary[FormItems.name] as! String, description: valuesDictionary[FormItems.description] as! String, location: valuesDictionary[FormItems.location] as! String, type: valuesDictionary[FormItems.type] as! String)
         }
     }
 }

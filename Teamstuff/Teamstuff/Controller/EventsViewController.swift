@@ -32,7 +32,6 @@ class EventsViewController: UITableViewController {
         super.viewDidLoad()
         
         self.clearsSelectionOnViewWillAppear = false
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         fetchEvents()
     }
@@ -58,8 +57,9 @@ class EventsViewController: UITableViewController {
         let event = events[indexPath.row]
         cell.event = event
         cell.titleLabel.text = event.title
-        cell.dayDateLabel.text = String(calendar.component(.day, from: event.date))
-        cell.monthDateLabel.text = event.date.monthShort.uppercased()
+        cell.dayDateLabel.text = String(calendar.component(.day, from: event.startDate))
+        cell.monthDateLabel.text = event.startDate.monthShort.uppercased()
+        cell.typeLabel.text = event.type
         
         return cell
     }
@@ -71,7 +71,7 @@ class EventsViewController: UITableViewController {
             
             let currentCell = tableView.cellForRow(at: indexPath) as! EventTableViewCell
             //TODO ICON
-            currentCell.statusLabel.text = "Available"
+            currentCell.statusLabel.text = "V"
             currentCell.statusLabel.textColor = .green
             currentCell.event.playerStatus[self.membersRepo!.getCurrentUser().id] = true
         }
@@ -87,7 +87,7 @@ class EventsViewController: UITableViewController {
         let notAvailableAction = UIContextualAction(style: .destructive, title: "Not Available") { (action, view, handler) in
             let currentCell = tableView.cellForRow(at: indexPath) as! EventTableViewCell
             //TODO ICON
-            currentCell.statusLabel.text = "Not available"
+            currentCell.statusLabel.text = "X"
             currentCell.statusLabel.textColor = .red
             currentCell.event.playerStatus[self.membersRepo!.getCurrentUser().id] = false
             
