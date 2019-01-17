@@ -17,12 +17,19 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = event.title
 //        self.dateLabel.text = event.date
         self.descriptionLabel.text = event.description
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM HH:mm"
+        self.dateLabel.text = String("From "+formatter.string(from: event.startDate) + " to " + formatter.string(from: event.endDate))
+        
+        self.locationLabel.text = event.location;
     }
     
 

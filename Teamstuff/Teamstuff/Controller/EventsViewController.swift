@@ -74,6 +74,8 @@ class EventsViewController: UITableViewController {
             currentCell.statusLabel.text = "V"
             currentCell.statusLabel.textColor = .green
             currentCell.event.playerStatus[self.membersRepo!.getCurrentUser().id] = true
+            
+            //TODO fix close after action
         }
         availableAction.backgroundColor = .green
         let configuration = UISwipeActionsConfiguration(actions: [availableAction])
@@ -91,6 +93,7 @@ class EventsViewController: UITableViewController {
             currentCell.statusLabel.textColor = .red
             currentCell.event.playerStatus[self.membersRepo!.getCurrentUser().id] = false
             
+            //TODO fix close after action
         }
         notAvailableAction.backgroundColor = .red
         let configuration = UISwipeActionsConfiguration(actions: [notAvailableAction])

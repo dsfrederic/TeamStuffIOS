@@ -10,15 +10,19 @@ import Foundation
 
 class EventRepository: Repository{
     func getAll() -> [Event] {
+        let startDate = Date.init()
+        let date = Calendar.current.date(byAdding: .day, value: 1, to: startDate)!
+        let date1 = Calendar.current.date(byAdding: .day, value: 8, to: startDate)!
+        let date2 = Calendar.current.date(byAdding: .day, value: 31, to: startDate)!
+        //let date3 = Calendar.current.date(byAdding: .day, value: 10, to: startDate)!
+        let date4 = Calendar.current.date(byAdding: .day, value: 54, to: startDate)!
+        
         
         var events = [
-            Event(),
-            Event(),
-            Event(),
-            Event(),
-            Event(),
-            Event(),
-            Event()
+            Event(startDate: date, endDate: date, title: "DRC-ROC", description: "Bekerwedstrijd", location: "Van Langehovenstraat 9200 Dendermonde", type: "Game"),
+            Event(startDate: date1, endDate: date1, title: "DRC-Frameries", description: "Competitiewedstrijd", location: "Van Langehovenstraat 9200 Dendermonde", type: "Game"),
+            Event(startDate: date4, endDate: date4, title: "Teambuilding", description: "Bekerwedstrijd", location: "De kust", type: "Other"),
+            Event(startDate: date2, endDate: date2, title: "Gym session", description: "Gym session voor uitleg nieuwe schema met uitleg want goede uitvoering is alles", location: "Van Langehovenstraat 9200 Dendermonde", type: "Training")
         ]
         
         events = events.sorted(by: {

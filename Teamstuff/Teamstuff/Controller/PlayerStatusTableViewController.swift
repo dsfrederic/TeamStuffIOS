@@ -14,16 +14,17 @@ class PlayerStatusTableViewController: UITableViewController {
     lazy var notAvailablePlayers : [String] = [""]
     
     lazy var mySections: [SectionData] = {
-        let section1 = SectionData(title: "Available", data: availablePlayers)
-        let section2 = SectionData(title: "Not available", data: notAvailablePlayers)
+        var titleAvailable = "Available (" + String(availablePlayers.count) + ")"
+        var titleNotAvailable = "Not available (" + String(notAvailablePlayers.count) + ")"
+        
+        let section1 = SectionData(title: titleAvailable, data: availablePlayers)
+        let section2 = SectionData(title: titleNotAvailable, data: notAvailablePlayers)
         
         return [section1, section2]
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
 
     // MARK: - Table view data source
@@ -52,6 +53,8 @@ class PlayerStatusTableViewController: UITableViewController {
 
         return cell
     }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
