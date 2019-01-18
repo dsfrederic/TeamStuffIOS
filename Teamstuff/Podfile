@@ -6,6 +6,8 @@ target 'Teamstuff' do
   use_frameworks!
 
   # Pods for Teamstuff
-    pod 'Eureka'
+ pod 'Eureka'
+pod 'UITextView+Placeholder'
+
 
 end

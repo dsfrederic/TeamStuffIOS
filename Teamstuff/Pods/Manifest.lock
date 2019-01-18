@@ -1,16 +1,20 @@
 PODS:
   - Eureka (4.3.1)
+  - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
   - Eureka
+  - "UITextView+Placeholder"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Eureka
+    - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
   Eureka: 28ea296f06710f6745266b71f17862048941a32d
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 8107f94bc9404c811b129abd51ba4dff431c74c1
+PODFILE CHECKSUM: 407713eb58b85c16c914d922a8c9da3c3ec833cd
 
 COCOAPODS: 1.5.3

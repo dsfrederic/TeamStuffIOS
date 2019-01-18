@@ -10,6 +10,8 @@ import UIKit
 
 class EventsViewController: UITableViewController {
     
+    //TODO refactor to DataSoure and Delegate
+    
 //PROPERTIES
     lazy var eventsRepo: EventRepository? = EventRepository()
     lazy var membersRepo: MemberRepository? = MemberRepository()

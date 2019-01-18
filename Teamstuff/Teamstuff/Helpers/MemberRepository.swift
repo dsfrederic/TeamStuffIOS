@@ -9,6 +9,10 @@
 import Foundation
 
 class MemberRepository:Repository {
+    func updateAll(a: [Member]) -> Bool {
+        return true
+    }
+    
     
     func getAll() -> [Member] {
         let members = [Member(fname: "Frederic", lname: "De Smet"), Member(fname: "Frederic", lname: "De Smet")]

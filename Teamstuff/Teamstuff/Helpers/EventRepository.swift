@@ -9,6 +9,10 @@
 import Foundation
 
 class EventRepository: Repository{
+    func updateAll(a: [Event]) -> Bool {
+        return true
+    }
+    
     func getAll() -> [Event] {
         let startDate = Date.init()
         let date = Calendar.current.date(byAdding: .day, value: 1, to: startDate)!

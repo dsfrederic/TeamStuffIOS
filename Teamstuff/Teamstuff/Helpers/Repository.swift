@@ -16,6 +16,7 @@ protocol Repository {
     func get( identifier:Int ) -> T?
     func create( a:T ) -> Bool
     func update( a:T ) -> Bool
+    func updateAll( a:[T] ) -> Bool
     func delete( a:T ) -> Bool
     
 }
