@@ -25,6 +25,7 @@ class EventDetailViewController: UIViewController {
 //        self.dateLabel.text = event.date
         self.descriptionLabel.text = event.description
         
+        //TODO MOVE TO REPOSITORY?
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM HH:mm"
         self.dateLabel.text = String("From "+formatter.string(from: event.startDate) + " to " + formatter.string(from: event.endDate))
