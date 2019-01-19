@@ -14,6 +14,8 @@
 		6D98DA0421F21100008B8E5B /* TeamRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98DA0321F21100008B8E5B /* TeamRepository.swift */; };
 		6DB4325221DD67D9004901EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB4325121DD67D9004901EB /* Extensions.swift */; };
 		6DB4325421DD7287004901EB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB4325321DD7287004901EB /* AddEventViewController.swift */; };
+		6DBD46CE21F28236008D9336 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DBD46CD21F28236008D9336 /* GoogleService-Info.plist */; };
+		6DBD46D021F285C3008D9336 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBD46CF21F285C3008D9336 /* MessageCollectionViewCell.swift */; };
 		6DC2220321DB7BCD00975479 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2220221DB7BCD00975479 /* AppDelegate.swift */; };
 		6DC2220521DB7BCD00975479 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2220421DB7BCD00975479 /* ProfileViewController.swift */; };
 		6DC2220721DB7BCD00975479 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2220621DB7BCD00975479 /* EventsViewController.swift */; };
@@ -21,12 +23,10 @@
 		6DC2220C21DB7BCE00975479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2220B21DB7BCE00975479 /* Assets.xcassets */; };
 		6DC2220F21DB7BCE00975479 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC2220D21DB7BCE00975479 /* LaunchScreen.storyboard */; };
 		6DC2221F21DB7E9700975479 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2221E21DB7E9700975479 /* Member.swift */; };
-		6DC2222121DB7F7400975479 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2222021DB7F7400975479 /* Player.swift */; };
 		6DC2222321DB814F00975479 /* MemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2222221DB814F00975479 /* MemberRepository.swift */; };
 		6DC2222521DB81CB00975479 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2222421DB81CB00975479 /* Repository.swift */; };
 		6DC2224521DB9DE500975479 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2224421DB9DE500975479 /* TeamViewController.swift */; };
 		6DC2224721DBB45A00975479 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2224621DBB45A00975479 /* Event.swift */; };
-		6DC2224921DBB4F100975479 /* GameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2224821DBB4F100975479 /* GameEvent.swift */; };
 		6DC2224B21DBB51B00975479 /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2224A21DBB51B00975479 /* EventRepository.swift */; };
 		6DC2224F21DC940400975479 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2224E21DC940400975479 /* EventTableViewCell.swift */; };
 		A318FD28B9031D5252C5C206 /* Pods_Teamstuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E49B50635F388864DA5C0E4 /* Pods_Teamstuff.framework */; };
@@ -41,6 +41,8 @@
 		6D98DA0321F21100008B8E5B /* TeamRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRepository.swift; sourceTree = "<group>"; };
 		6DB4325121DD67D9004901EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6DB4325321DD7287004901EB /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		6DBD46CD21F28236008D9336 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6DBD46CF21F285C3008D9336 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		6DC221FF21DB7BCD00975479 /* Teamstuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teamstuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC2220221DB7BCD00975479 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DC2220421DB7BCD00975479 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -50,12 +52,10 @@
 		6DC2220E21DB7BCE00975479 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DC2221021DB7BCE00975479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DC2221E21DB7E9700975479 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
-		6DC2222021DB7F7400975479 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		6DC2222221DB814F00975479 /* MemberRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRepository.swift; sourceTree = "<group>"; };
 		6DC2222421DB81CB00975479 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		6DC2224421DB9DE500975479 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		6DC2224621DBB45A00975479 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		6DC2224821DBB4F100975479 /* GameEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEvent.swift; sourceTree = "<group>"; };
 		6DC2224A21DBB51B00975479 /* EventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepository.swift; sourceTree = "<group>"; };
 		6DC2224E21DC940400975479 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		792CA520024C622CCB7FD497 /* Pods-Teamstuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teamstuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +121,7 @@
 				6DC2220B21DB7BCE00975479 /* Assets.xcassets */,
 				6DC2220D21DB7BCE00975479 /* LaunchScreen.storyboard */,
 				6DC2221021DB7BCE00975479 /* Info.plist */,
+				6DBD46CD21F28236008D9336 /* GoogleService-Info.plist */,
 			);
 			path = Teamstuff;
 			sourceTree = "<group>";
@@ -129,9 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				6DC2221E21DB7E9700975479 /* Member.swift */,
-				6DC2222021DB7F7400975479 /* Player.swift */,
 				6DC2224621DBB45A00975479 /* Event.swift */,
-				6DC2224821DBB4F100975479 /* GameEvent.swift */,
 				6D98DA0121F20FF2008B8E5B /* Message.swift */,
 			);
 			path = Model;
@@ -141,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				6DC2224E21DC940400975479 /* EventTableViewCell.swift */,
+				6DBD46CF21F285C3008D9336 /* MessageCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DC2220F21DB7BCE00975479 /* LaunchScreen.storyboard in Resources */,
+				6DBD46CE21F28236008D9336 /* GoogleService-Info.plist in Resources */,
 				6DC2220C21DB7BCE00975479 /* Assets.xcassets in Resources */,
 				6DC2220A21DB7BCD00975479 /* Main.storyboard in Resources */,
 			);
@@ -249,15 +250,23 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -297,6 +306,7 @@
 				6DC2224F21DC940400975479 /* EventTableViewCell.swift in Sources */,
 				6DC2220721DB7BCD00975479 /* EventsViewController.swift in Sources */,
 				6D98DA0221F20FF2008B8E5B /* Message.swift in Sources */,
+				6DBD46D021F285C3008D9336 /* MessageCollectionViewCell.swift in Sources */,
 				6DC2224721DBB45A00975479 /* Event.swift in Sources */,
 				6DC2224B21DBB51B00975479 /* EventRepository.swift in Sources */,
 				6DC2224521DB9DE500975479 /* TeamViewController.swift in Sources */,
@@ -307,8 +317,6 @@
 				6DC2222521DB81CB00975479 /* Repository.swift in Sources */,
 				6DC2220321DB7BCD00975479 /* AppDelegate.swift in Sources */,
 				6DC2220521DB7BCD00975479 /* ProfileViewController.swift in Sources */,
-				6DC2222121DB7F7400975479 /* Player.swift in Sources */,
-				6DC2224921DBB4F100975479 /* GameEvent.swift in Sources */,
 				6DC2221F21DB7E9700975479 /* Member.swift in Sources */,
 				6D98DA0021F1E4AF008B8E5B /* AddMessageViewController.swift in Sources */,
 				6DB4325221DD67D9004901EB /* Extensions.swift in Sources */,

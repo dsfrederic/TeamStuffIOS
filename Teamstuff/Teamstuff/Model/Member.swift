@@ -28,4 +28,6 @@ class Member{
     var address: String?
     //telephone
     var telephone: String?
+    
+    var team:Int?
 }

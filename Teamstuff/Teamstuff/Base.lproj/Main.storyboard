@@ -116,10 +116,10 @@
                                             <constraint firstAttribute="bottom" secondItem="cwt-1p-IwH" secondAttribute="bottom" constant="16" id="hYS-7A-E27"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="messageTextLabel" destination="cwt-1p-IwH" id="ZQF-aj-lGU"/>
-                                            <outlet property="nameLabel" destination="Lqz-Fu-ZV4" id="S2M-GL-nS3"/>
-                                            <outlet property="postedDateLabel" destination="0hN-xO-FWc" id="4oH-GB-CuE"/>
-                                            <outlet property="profileImageView" destination="0Wg-sG-Rs9" id="N6E-UO-70H"/>
+                                            <outlet property="messageTextLabel" destination="cwt-1p-IwH" id="baP-8f-HCl"/>
+                                            <outlet property="nameLabel" destination="Lqz-Fu-ZV4" id="Roz-qo-Xjk"/>
+                                            <outlet property="postedDateLabel" destination="0hN-xO-FWc" id="IqS-ex-fbG"/>
+                                            <outlet property="profileImageView" destination="0Wg-sG-Rs9" id="mh5-oB-miA"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

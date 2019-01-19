@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Message {
+class Message : Codable {
     var message:String
     var author:String
     var authorId:String
@@ -20,4 +20,26 @@ class Message {
         self.authorId = authorId
         self.postDate = postDate
     }
+    
+//    func toAnyObject() -> Any {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        let convertedPostDate = formatter.string(from: postDate)
+//        print(postDate)
+//        print("converted: " + convertedPostDate)
+//
+//        return [
+//            "message": message,
+//            "author": author,
+//            "authorId": authorId,
+//            "postDate": convertedPostDate
+//        ]
+//    }
+//
+//    init(snapshot:Any) {
+//        self.message = snapshot["message"]
+//        self.author = snapshot["author"]
+//        self.authorId = snapshot["authorId"]
+//        self.postDate = snapshot["postDate"]
+//    }
 }

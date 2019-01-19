@@ -9,34 +9,19 @@
 import Foundation
 
 import UIKit
-
-class MessageCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var postedDateLabel: UILabel!
-    @IBOutlet weak var messageTextLabel: UILabel!
-    
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        setNeedsLayout()
-        layoutIfNeeded()
-        
-        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
-        var frame = layoutAttributes.frame
-        frame.size.height = ceil(size.height)
-        layoutAttributes.frame = frame
-        
-        return layoutAttributes
-    }
-}
+import Firebase
+import CodableFirebase
 
 class TeamViewController: UIViewController {
+//VIEW CONNECTIONS
+    @IBOutlet weak var collectionView: UICollectionView!
     
+//PROPERTIES
     var messages:[Message] = []
     var teamRepo = TeamRepository()
     var memberRepo = MemberRepository()
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
+//LIFECYCLE
     override func viewDidLoad() {
         fetchMessages()
         let refreshControl = UIRefreshControl()
@@ -52,32 +37,61 @@ class TeamViewController: UIViewController {
             flowLayout.estimatedItemSize = CGSize(width: collectionView.frame.width-20, height: 300)
         }
     }
-    
+
+//NAVIGATION
     @IBAction func unwindToMessages(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddMessageViewController, let message = sourceViewController.message {
             let messageObject = Message(message: message, author: memberRepo.getCurrentUser().fname + " " + memberRepo.getCurrentUser().lname, authorId: memberRepo.getCurrentUser().id, postDate: Date.init())
-            print(messages.count)
             addMessage(message: messageObject)
-            print(messages.count)
-            fetchMessages()
-            print(messages.count)
+            collectionView.reloadData()
         }
     }
     
     @objc private func refreshMessages(_ sender: Any) {
-        fetchMessages()
-        
+        collectionView.reloadData()
         collectionView.refreshControl?.endRefreshing()
     }
     
 //PERSISTENCE
     func addMessage(message: Message){
-        _ = teamRepo.create(a: message)
+        let teamId = "*TEST*"
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference().child(teamId).child("Messages")
+        
+        let data = try! FirebaseEncoder().encode(message)
+        
+        ref.childByAutoId().setValue(data)
     }
     
     func fetchMessages(){
-        self.messages = teamRepo.getAll()
-        collectionView.reloadData()
+        //self.messages = teamRepo.getAll()
+        let teamId = "*TEST*"
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference().child(teamId).child("Messages")
+        
+        
+        
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            guard snapshot.value != nil else { return }
+            do {
+                var fetchedMessages: [Message] = []
+                
+                for child in snapshot.children.allObjects as! [DataSnapshot] {
+                    let model = try FirebaseDecoder().decode(Message.self, from: child.value!)
+                    fetchedMessages.append(model)
+                }
+                
+                self.messages = fetchedMessages.reversed()
+                
+                self.collectionView.reloadData()
+            } catch let error {
+                print(error)
+            }
+        })
+        
+        
     }
 }
 
@@ -99,7 +113,7 @@ extension TeamViewController: UICollectionViewDataSource {
         cell.nameLabel.text = message.author
         cell.messageTextLabel.text = message.message
         let formatter = DateFormatter()
-//        formatter.dateFormat = "dd MMM HH:mm"
+        //formatter.dateFormat = "dd MMM HH:mm"
         formatter.timeStyle = .none
         formatter.dateStyle = .medium
         formatter.locale = Locale.current
@@ -116,7 +130,6 @@ extension TeamViewController: UICollectionViewDataSource {
         cell.layer.shadowRadius = 2.0
         cell.layer.shadowOpacity = 1.0
         cell.layer.masksToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
         
         return cell
     }
