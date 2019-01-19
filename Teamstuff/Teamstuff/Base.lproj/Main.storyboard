@@ -199,6 +199,24 @@
             </objects>
             <point key="canvasLocation" x="3193" y="769"/>
         </scene>
+        <!--Additional Setup View Controller-->
+        <scene sceneID="t2k-Q3-PBu">
+            <objects>
+                <viewController id="zGQ-Mx-AJc" customClass="AdditionalSetupViewController" customModule="Teamstuff" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zrt-nI-Slg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gsK-Th-cGn"/>
+                    </view>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="goHomeAfterSetup" id="aOE-JS-u47"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mEh-oG-VOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1099" y="411"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -254,11 +272,12 @@
                     </view>
                     <connections>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="goHome" id="fRd-jD-2WW"/>
+                        <segue destination="zGQ-Mx-AJc" kind="show" identifier="additionalSetup" id="PD9-YJ-cJP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="keG-pA-1PI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-933" y="0.0"/>
+            <point key="canvasLocation" x="-2223" y="-1"/>
         </scene>
         <!--Events-->
         <scene sceneID="MZg-ZP-xCA">
@@ -572,4 +591,7 @@
         <image name="second" width="30" height="30"/>
         <image name="user (1)" width="46.428211212158203" height="46.428211212158203"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="aOE-JS-u47"/>
+    </inferredMetricsTieBreakers>
 </document>

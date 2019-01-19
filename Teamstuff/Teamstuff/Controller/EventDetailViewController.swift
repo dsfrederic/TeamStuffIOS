@@ -7,13 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class EventDetailViewController: UIViewController {
-    
-    lazy var membersRepo: MemberRepository? = MemberRepository()
-    
     var event: Event?
     var text: String = ""
+    var ref: DatabaseReference!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -21,6 +20,9 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ref = Database.database().reference().child("Users")
+        
         if(event != nil){
             self.title = event!.title
             //        self.dateLabel.text = event.date
@@ -32,6 +34,8 @@ class EventDetailViewController: UIViewController {
             self.dateLabel.text = String("From "+formatter.string(from: event!.startDate) + " to " + formatter.string(from: event!.endDate))
             
             self.locationLabel.text = event!.location;
+            
+            
         }
     }
     
@@ -47,15 +51,18 @@ class EventDetailViewController: UIViewController {
             vc!.view.translatesAutoresizingMaskIntoConstraints = false
             if(event!.playerStatus != nil){
                 let availablePlayersId = Array(event!.playerStatus!.filter{$0.value == true}.keys)
-                vc!.availablePlayers = membersRepo!.getNamesById(identifiers: availablePlayersId)
+                vc!.availablePlayers = getNamesById(identifiers: availablePlayersId)
                 let notAvailablePlayersId = Array(event!.playerStatus!.filter{$0.value == false}.keys)
-                vc!.notAvailablePlayers = membersRepo!.getNamesById(identifiers: notAvailablePlayersId)
+                vc!.notAvailablePlayers = getNamesById(identifiers: notAvailablePlayersId)
             }
             
             
         }
     }
     
-    
+    //persistence
+    func getNamesById(identifiers: [String]) -> [String] {
+        return ["TO DO", "TO DO", "TO DO"]
+    }
 
 }

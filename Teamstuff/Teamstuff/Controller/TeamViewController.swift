@@ -18,12 +18,30 @@ class TeamViewController: UIViewController {
     
 //PROPERTIES
     var messages:[Message] = []
-    var memberRepo = MemberRepository()
     var ref: DatabaseReference!
     
 //LIFECYCLE
     override func viewDidLoad() {
-        self.ref = Database.database().reference().child("*TEST TEAM ID*").child("Messages")
+        
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            guard snapshot.value != nil else { return }
+            do {
+                var fetchedMessages: [Message] = []
+                
+                for child in snapshot.children.allObjects as! [DataSnapshot] {
+                    let model = try FirebaseDecoder().decode(Message.self, from: child.value!)
+                    fetchedMessages.append(model)
+                }
+                
+                self.messages = fetchedMessages.reversed()
+                
+                self.collectionView.reloadData()
+            } catch let error {
+                print(error)
+            }
+        })
+        
+        self.ref = Database.database().reference().child("Teams").child(teamIdGlobal).child("Messages")
         
         
         fetchMessages()
@@ -44,7 +62,7 @@ class TeamViewController: UIViewController {
 //NAVIGATION
     @IBAction func unwindToMessages(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddMessageViewController, let message = sourceViewController.message {
-            let messageObject = Message(message: message, author: memberRepo.getCurrentUser().fname + " " + memberRepo.getCurrentUser().lname, authorId: memberRepo.getCurrentUser().id, postDate: Date.init())
+            let messageObject = Message(message: message, author: Auth.auth().currentUser!.displayName! , authorId: Auth.auth().currentUser!.uid, postDate: Date.init())
             addMessage(message: messageObject)
             collectionView.reloadData()
         }

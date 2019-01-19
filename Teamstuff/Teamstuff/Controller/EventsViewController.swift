@@ -15,8 +15,6 @@ class EventsViewController: UITableViewController {
     //TODO refactor to DataSoure and Delegate
     
 //PROPERTIES
-    lazy var membersRepo: MemberRepository? = MemberRepository()
-    
     var events:[Event] = []
     var ref: DatabaseReference!
     
@@ -26,7 +24,7 @@ class EventsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = Database.database().reference().child("*TEST TEAM ID*").child("Events")
+        ref = Database.database().reference().child(teamIdGlobal).child("Events")
         fetchEvents()
         
         self.clearsSelectionOnViewWillAppear = false
@@ -73,10 +71,10 @@ class EventsViewController: UITableViewController {
             print("Available action")
             
             if var playerStatus = currentCell.event!.playerStatus {
-                playerStatus.updateValue(true, forKey: self.membersRepo!.getCurrentUser().id)
+                playerStatus.updateValue(true, forKey: Auth.auth().currentUser!.uid)
             } else{
                 currentCell.event?.playerStatus = [:]
-                currentCell.event?.playerStatus!.updateValue(true, forKey: self.membersRepo!.getCurrentUser().id)
+                currentCell.event?.playerStatus!.updateValue(true, forKey: Auth.auth().currentUser!.uid)
             }
             
             self.updateEvent(event: currentCell.event!)
@@ -101,10 +99,10 @@ class EventsViewController: UITableViewController {
             print("Not Available action")
             
             if var playerStatus = currentCell.event!.playerStatus {
-                playerStatus.updateValue(false, forKey: self.membersRepo!.getCurrentUser().id)
+                playerStatus.updateValue(false, forKey: Auth.auth().currentUser!.uid)
             } else{
                 currentCell.event?.playerStatus = [:]
-                currentCell.event?.playerStatus!.updateValue(false, forKey: self.membersRepo!.getCurrentUser().id)
+                currentCell.event?.playerStatus!.updateValue(false, forKey: Auth.auth().currentUser!.uid)
             }
             
             self.updateEvent(event: currentCell.event!)

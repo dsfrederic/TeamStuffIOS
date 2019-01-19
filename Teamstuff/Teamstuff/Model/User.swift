@@ -8,27 +8,16 @@
 
 import Foundation
 
-class User{
+class User : Codable{
     
-    init(fname: String, lname: String) {
-        self.fname = fname
-        self.lname = lname
-        self.id = "DummyID"
+    init(name: String, id: String) {
+        self.name = name
+        self.id = id
     }
     
     var id: String
     
-    var fname: String
-    //lname
-    var lname: String
-    //email
-    var email: String?
-    //birthday
-    var birthday: String?
-    //address
-    var address: String?
-    //telephone
-    var telephone: String?
+    var name: String
     
-    var team:Int?
+    var teamId: String?
 }
