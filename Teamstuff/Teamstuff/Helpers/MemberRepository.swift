@@ -9,18 +9,18 @@
 import Foundation
 
 class MemberRepository:Repository {
-    func updateAll(a: [Member]) -> Bool {
+    func updateAll(a: [User]) -> Bool {
         return true
     }
     
     
-    func getAll() -> [Member] {
-        let members = [Member(fname: "Frederic", lname: "De Smet"), Member(fname: "Frederic", lname: "De Smet")]
+    func getAll() -> [User] {
+        let members = [User(fname: "Frederic", lname: "De Smet"), User(fname: "Frederic", lname: "De Smet")]
         return members
     }
-    func get( identifier:Int ) -> Member? {
+    func get( identifier:Int ) -> User? {
         //TODO
-        return Member(fname: "Frederic", lname: "De Smet")
+        return User(fname: "Frederic", lname: "De Smet")
     }
     
     func getNamesById( identifiers:[String] ) ->  [String] {
@@ -28,20 +28,20 @@ class MemberRepository:Repository {
         return members
     }
     
-    func getCurrentUser() -> Member {
+    func getCurrentUser() -> User {
         //TODO
-        let currentUser = Member(fname: "Frederic", lname: "De Smet")
+        let currentUser = User(fname: "Frederic", lname: "De Smet")
         currentUser.id = "idFredericDesmet"
         return currentUser
     }
     
-    func create( a:Member ) -> Bool {
+    func create( a:User ) -> Bool {
         return true
     }
-    func update( a:Member ) -> Bool {
+    func update( a:User ) -> Bool {
         return true
     }
-    func delete( a:Member ) -> Bool {
+    func delete( a:User ) -> Bool {
         return true
     }
 }
