@@ -301,6 +301,7 @@ class AddEventViewController: FormViewController {
             let valuesDictionary = form.values()
             
             //EVENT UITBREIDEN!
+            //TODO EXCLUDE OPTIONALS
             event = Event(startDate: valuesDictionary[FormItems.dateStart] as! Date, endDate: valuesDictionary[FormItems.dateEnd] as! Date, title: valuesDictionary[FormItems.name] as! String, description: valuesDictionary[FormItems.description] as! String, location: valuesDictionary[FormItems.location] as! String, type: valuesDictionary[FormItems.type] as! String)
         }
     }

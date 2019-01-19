@@ -18,11 +18,14 @@ class TeamViewController: UIViewController {
     
 //PROPERTIES
     var messages:[Message] = []
-    var teamRepo = TeamRepository()
     var memberRepo = MemberRepository()
+    var ref: DatabaseReference!
     
 //LIFECYCLE
     override func viewDidLoad() {
+        self.ref = Database.database().reference().child("*TEST TEAM ID*").child("Messages")
+        
+        
         fetchMessages()
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshMessages(_:)), for: .valueChanged)
@@ -53,26 +56,14 @@ class TeamViewController: UIViewController {
     }
     
 //PERSISTENCE
+    
+
     func addMessage(message: Message){
-        let teamId = "*TEST*"
-        
-        var ref: DatabaseReference!
-        ref = Database.database().reference().child(teamId).child("Messages")
-        
         let data = try! FirebaseEncoder().encode(message)
-        
         ref.childByAutoId().setValue(data)
     }
     
     func fetchMessages(){
-        //self.messages = teamRepo.getAll()
-        let teamId = "*TEST*"
-        
-        var ref: DatabaseReference!
-        ref = Database.database().reference().child(teamId).child("Messages")
-        
-        
-        
         ref.observe(DataEventType.value, with: { (snapshot) in
             guard snapshot.value != nil else { return }
             do {
@@ -90,8 +81,6 @@ class TeamViewController: UIViewController {
                 print(error)
             }
         })
-        
-        
     }
 }
 

@@ -7,25 +7,18 @@
 //
 
 import UIKit
+import Firebase
+import CodableFirebase
 
 class EventsViewController: UITableViewController {
     
     //TODO refactor to DataSoure and Delegate
     
 //PROPERTIES
-    lazy var eventsRepo: EventRepository? = EventRepository()
     lazy var membersRepo: MemberRepository? = MemberRepository()
     
-    //TODO: START ON FIRST EVENT IN THE FUTURE
     var events:[Event] = []
-    
-    @IBAction func unwindToEventList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? AddEventViewController, let event = sourceViewController.event {
-            let newIndexPath = IndexPath(row: events.count, section: 0)
-            events.append(event)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-        }
-    }
+    var ref: DatabaseReference!
     
 //INIT
     
@@ -33,9 +26,10 @@ class EventsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.clearsSelectionOnViewWillAppear = false
-        
+        ref = Database.database().reference().child("*TEST TEAM ID*").child("Events")
         fetchEvents()
+        
+        self.clearsSelectionOnViewWillAppear = false
     }
     
 //HELPER FUNCTIONS
@@ -75,7 +69,17 @@ class EventsViewController: UITableViewController {
             //TODO ICON
             currentCell.statusLabel.text = "V"
             currentCell.statusLabel.textColor = .green
-            currentCell.event.playerStatus[self.membersRepo!.getCurrentUser().id] = true
+            
+            print("Available action")
+            
+            if var playerStatus = currentCell.event!.playerStatus {
+                playerStatus.updateValue(true, forKey: self.membersRepo!.getCurrentUser().id)
+            } else{
+                currentCell.event?.playerStatus = [:]
+                currentCell.event?.playerStatus!.updateValue(true, forKey: self.membersRepo!.getCurrentUser().id)
+            }
+            
+            self.updateEvent(event: currentCell.event!)
             
             //TODO fix close after action
         }
@@ -93,9 +97,20 @@ class EventsViewController: UITableViewController {
             //TODO ICON
             currentCell.statusLabel.text = "X"
             currentCell.statusLabel.textColor = .red
-            currentCell.event.playerStatus[self.membersRepo!.getCurrentUser().id] = false
+            
+            print("Not Available action")
+            
+            if var playerStatus = currentCell.event!.playerStatus {
+                playerStatus.updateValue(false, forKey: self.membersRepo!.getCurrentUser().id)
+            } else{
+                currentCell.event?.playerStatus = [:]
+                currentCell.event?.playerStatus!.updateValue(false, forKey: self.membersRepo!.getCurrentUser().id)
+            }
+            
+            self.updateEvent(event: currentCell.event!)
             
             //TODO fix close after action
+            
         }
         notAvailableAction.backgroundColor = .red
         let configuration = UISwipeActionsConfiguration(actions: [notAvailableAction])
@@ -109,23 +124,64 @@ class EventsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEventDetailView"
         {
-            print("executed")
             let cell: EventTableViewCell? = sender as? EventTableViewCell
             //CLEAN CODE???
             let vc = segue.destination as? EventDetailViewController
             vc!.event = cell!.event
-            print(cell!.event)
-            print(vc!.event)
+        }
+    }
+    
+    @IBAction func unwindToEventList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? AddEventViewController, let event = sourceViewController.event {
+            addEvent(event: event)
         }
     }
     
 //PERSISTENCE
-    func saveEvents(){
+    func updateEvent(event:Event){
+        let data = try! FirebaseEncoder().encode(event)
+        ref.child(event.id).setValue(data)
+    }
+    
+    func addEvent(event: Event){
+        var event = event
+        let key = ref.childByAutoId().key
         
+        event.id = key!
+        let data = try! FirebaseEncoder().encode(event)
+        
+        ref.child(event.id).setValue(data)
+        tableView.reloadData()
     }
     
     func fetchEvents(){
-        events = eventsRepo!.getAll()
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            guard snapshot.value != nil else { return }
+            do {
+                var fetchedEvents: [Event] = []
+                
+                for child in snapshot.children.allObjects as! [DataSnapshot] {
+                    let model = try FirebaseDecoder().decode(Event.self, from: child.value!)
+                    fetchedEvents.append(model)
+                }
+                
+                fetchedEvents = fetchedEvents.filter{
+                    if($0.startDate >= Date.init()){
+                        return true
+                    } else {
+                        return false
+                    }
+                    }.sorted(by: {
+                        $1.startDate.compare($0.startDate) == .orderedDescending
+                    })
+                
+                self.events = fetchedEvents
+                
+                self.tableView.reloadData()
+            } catch let error {
+                print(error)
+            }
+        })
     }
 
 }

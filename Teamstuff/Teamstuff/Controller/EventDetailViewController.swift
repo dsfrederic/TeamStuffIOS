@@ -12,7 +12,7 @@ class EventDetailViewController: UIViewController {
     
     lazy var membersRepo: MemberRepository? = MemberRepository()
     
-    var event: Event = Event()
+    var event: Event?
     var text: String = ""
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -21,16 +21,18 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = event.title
-//        self.dateLabel.text = event.date
-        self.descriptionLabel.text = event.description
-        
-        //TODO MOVE TO REPOSITORY?
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM HH:mm"
-        self.dateLabel.text = String("From "+formatter.string(from: event.startDate) + " to " + formatter.string(from: event.endDate))
-        
-        self.locationLabel.text = event.location;
+        if(event != nil){
+            self.title = event!.title
+            //        self.dateLabel.text = event.date
+            self.descriptionLabel.text = event!.description
+            
+            //TODO MOVE TO REPOSITORY?
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd MMM HH:mm"
+            self.dateLabel.text = String("From "+formatter.string(from: event!.startDate) + " to " + formatter.string(from: event!.endDate))
+            
+            self.locationLabel.text = event!.location;
+        }
     }
     
 
@@ -42,15 +44,14 @@ class EventDetailViewController: UIViewController {
         if segue.identifier == "playerStatusTable"
         {
             let vc = segue.destination as? PlayerStatusTableViewController
-            
             vc!.view.translatesAutoresizingMaskIntoConstraints = false
+            if(event!.playerStatus != nil){
+                let availablePlayersId = Array(event!.playerStatus!.filter{$0.value == true}.keys)
+                vc!.availablePlayers = membersRepo!.getNamesById(identifiers: availablePlayersId)
+                let notAvailablePlayersId = Array(event!.playerStatus!.filter{$0.value == false}.keys)
+                vc!.notAvailablePlayers = membersRepo!.getNamesById(identifiers: notAvailablePlayersId)
+            }
             
-            let availablePlayersId = Array(event.playerStatus.filter{$0.value == true}.keys)
-            print(availablePlayersId)
-            vc!.availablePlayers = membersRepo!.getNamesById(identifiers: availablePlayersId)
-            let notAvailablePlayersId = Array(event.playerStatus.filter{$0.value == false}.keys)
-            print(notAvailablePlayersId)
-            vc!.notAvailablePlayers = membersRepo!.getNamesById(identifiers: notAvailablePlayersId)
             
         }
     }

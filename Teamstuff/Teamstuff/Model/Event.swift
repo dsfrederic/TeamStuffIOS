@@ -8,7 +8,9 @@
 
 import Foundation
 
-class Event {
+struct Event : Codable {
+    
+    //TODO REMOVE INIT
     init(startDate: Date, endDate:Date ,title: String, description: String, location:String, type:String) {
         self.startDate = startDate
         self.endDate = endDate
@@ -16,22 +18,15 @@ class Event {
         self.description = description
         self.location = location
         self.type = type
+        self.id = "DummyID"
     }
-    
-    init() {
-        self.startDate = Date.init()
-        self.endDate = Date.init()
-        self.title = "DomainDUMMY"
-        self.description = "DomainDUMMY"
-        self.location = "DomainDUMMY"
-        self.type = "Game"
-    }
-    
-    var playerStatus: [String :Bool] = [:]
+
+    var id:String
     var startDate: Date
     var endDate: Date
     var title: String
     var description: String?
     var location: String?
     var type:String
+    var playerStatus: [String :Bool]?
 }
