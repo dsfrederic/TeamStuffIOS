@@ -7,24 +7,33 @@
 //
 
 import UIKit
-import UITextView_Placeholder;
+import Eureka
 
-class AddMessageViewController: UIViewController {
-    @IBOutlet weak var messageTextField: UITextView!
+class AddMessageViewController: FormViewController {
     
     var message : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messageTextField.layer.borderColor = UIColor.gray.cgColor
-        messageTextField.layer.borderWidth = 1
-        messageTextField.layer.cornerRadius = 4
-        messageTextField.placeholder = "Enter message here..."
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        message = messageTextField.text
+        form +++ Section()
+            
+            <<< TextAreaRow("Message") {
+                $0.title = "Message"
+                $0.textAreaHeight = TextAreaHeight.dynamic(initialTextViewHeight: 96)
+                $0.add(rule: RuleRequired())
+                $0.placeholder = "Write here you're message"
+            }
+            
+            <<< ButtonRow(){
+                $0.title = "Submit"
+                
+                }.onCellSelection{ cell, row in
+                    //SUBMIT
+                    if self.form.validate().isEmpty {
+                        self.performSegue(withIdentifier: "unwindToMessages", sender: self)
+                    }
+                }
     }
     
     // MARK: - Navigation
@@ -32,7 +41,10 @@ class AddMessageViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        message = messageTextField.text
+        let row: TextAreaRow? = form.rowBy(tag: "Message")
+        let value : String = row!.value!
+        
+        message = value
     }
 
 }

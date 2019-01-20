@@ -27,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="-732"/>
+            <point key="canvasLocation" x="777" y="-733"/>
         </scene>
         <!--Messages-->
         <scene sceneID="Lsy-6W-dDU">
@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKh-8y-IzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="769"/>
+            <point key="canvasLocation" x="1491" y="769"/>
         </scene>
         <!--Add Message View Controller-->
         <scene sceneID="KZ4-M5-5Pe">
@@ -143,44 +143,17 @@
                     <view key="view" contentMode="scaleToFill" id="Nq0-8S-zXM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="35i-34-5OM">
-                                <rect key="frame" x="20" y="113" width="374" height="638"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter message here"/>
-                                </userDefinedRuntimeAttributes>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aw-FD-Xvb">
-                                <rect key="frame" x="16" y="767" width="382" height="30"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="Post"/>
-                                <connections>
-                                    <segue destination="UQU-KZ-uvf" kind="unwind" unwindAction="unwindToMessagesWithSender:" id="3lK-FM-ugL"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="35i-34-5OM" firstAttribute="top" secondItem="kTK-1Q-6C3" secondAttribute="top" constant="25" id="3B7-tr-MSb"/>
-                            <constraint firstItem="kTK-1Q-6C3" firstAttribute="trailing" secondItem="35i-34-5OM" secondAttribute="trailing" constant="20" id="CUA-44-rEO"/>
-                            <constraint firstItem="6aw-FD-Xvb" firstAttribute="leading" secondItem="kTK-1Q-6C3" secondAttribute="leading" constant="16" id="TxA-Wz-d44"/>
-                            <constraint firstItem="6aw-FD-Xvb" firstAttribute="top" secondItem="35i-34-5OM" secondAttribute="bottom" constant="16" id="Ztq-Gd-KfG"/>
-                            <constraint firstItem="kTK-1Q-6C3" firstAttribute="trailing" secondItem="6aw-FD-Xvb" secondAttribute="trailing" constant="16" id="dKf-pe-1nL"/>
-                            <constraint firstItem="35i-34-5OM" firstAttribute="leading" secondItem="kTK-1Q-6C3" secondAttribute="leading" constant="20" id="qPZ-wz-fpz"/>
-                            <constraint firstItem="kTK-1Q-6C3" firstAttribute="bottom" secondItem="6aw-FD-Xvb" secondAttribute="bottom" constant="16" id="rLG-mn-APD"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kTK-1Q-6C3"/>
                     </view>
                     <connections>
-                        <outlet property="messageTextField" destination="35i-34-5OM" id="hIw-F1-ToP"/>
+                        <segue destination="UQU-KZ-uvf" kind="unwind" identifier="unwindToMessages" unwindAction="unwindToMessagesWithSender:" id="YSA-qg-ouC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FoF-rh-cQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="UQU-KZ-uvf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2278" y="769"/>
+            <point key="canvasLocation" x="2259" y="769"/>
         </scene>
         <!--Additional Setup View Controller-->
         <scene sceneID="t2k-Q3-PBu">
@@ -567,7 +540,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z7R-q3-XCQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="769"/>
+            <point key="canvasLocation" x="759" y="769"/>
         </scene>
     </scenes>
     <resources>
@@ -577,6 +550,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OVg-9c-hBD"/>
-        <segue reference="fRd-jD-2WW"/>
+        <segue reference="aOE-JS-u47"/>
     </inferredMetricsTieBreakers>
 </document>
