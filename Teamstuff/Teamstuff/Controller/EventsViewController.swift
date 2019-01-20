@@ -24,7 +24,7 @@ class EventsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = Database.database().reference().child(teamIdGlobal).child("Events")
+        ref = Database.database().reference().child("Teams").child(teamIdGlobal).child("Events")
         fetchEvents()
         
         self.clearsSelectionOnViewWillAppear = false

@@ -22,27 +22,7 @@ class TeamViewController: UIViewController {
     
 //LIFECYCLE
     override func viewDidLoad() {
-        
-        ref.observe(DataEventType.value, with: { (snapshot) in
-            guard snapshot.value != nil else { return }
-            do {
-                var fetchedMessages: [Message] = []
-                
-                for child in snapshot.children.allObjects as! [DataSnapshot] {
-                    let model = try FirebaseDecoder().decode(Message.self, from: child.value!)
-                    fetchedMessages.append(model)
-                }
-                
-                self.messages = fetchedMessages.reversed()
-                
-                self.collectionView.reloadData()
-            } catch let error {
-                print(error)
-            }
-        })
-        
         self.ref = Database.database().reference().child("Teams").child(teamIdGlobal).child("Messages")
-        
         
         fetchMessages()
         let refreshControl = UIRefreshControl()

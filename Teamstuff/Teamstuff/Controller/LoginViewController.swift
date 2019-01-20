@@ -10,7 +10,7 @@ import UIKit
 import FirebaseUI
 import CodableFirebase
 
-var teamIdGlobal:String = ""
+var teamIdGlobal = "Test TEAM ID"
 
 class LoginViewController: UIViewController {
     var ref: DatabaseReference!
@@ -75,8 +75,6 @@ extension LoginViewController: FUIAuthDelegate {
         ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if snapshot.hasChild((authDataResult?.user.uid)!) {
                 self.performSegue(withIdentifier: "goHome", sender: self)
-                
-                teamIdGlobal = snapshot.childSnapshot(forPath: authDataResult!.user.uid).value(forKey: "teamId") as! String
             } else {
                 //User doesn't exist in DB
                 
@@ -90,7 +88,6 @@ extension LoginViewController: FUIAuthDelegate {
             }
         })
         
-        //authDataResult?.user.uid
         
     }
 }

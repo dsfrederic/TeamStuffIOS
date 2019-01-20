@@ -85,7 +85,6 @@ class AdditionalSetupViewController: FormViewController {
                 }
                 
                 self.user.teamId = teamId!
-                teamIdGlobal = teamId!
                 let data = try! FirebaseEncoder().encode(self.user)
                 self.ref.child("Users").child(self.user.id).setValue(data)
                 self.performSegue(withIdentifier: "goHomeAfterSetup", sender: self)
@@ -97,6 +96,7 @@ class AdditionalSetupViewController: FormViewController {
             let teamKey = ref.child("Teams").childByAutoId().key
             //TODO SET IMAGE
             user.teamId = teamKey
+            teamIdGlobal = teamKey!
             let data = try! FirebaseEncoder().encode(user)
             ref.child("Users").child(user.id).setValue(data)
         
