@@ -30,6 +30,28 @@ class EventsViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = false
     }
     
+    var handle : AuthStateDidChangeListenerHandle?
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                
+            } else {
+                self.performSegue(withIdentifier: "returnToLoginEvent", sender: self)
+            }
+        }
+    }
+    
+    
+    //    Back button, dismissing modal screen, ...
+    //    * saving edits
+    //    * hide keyboard
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
 //HELPER FUNCTIONS
     
     //required for tableview

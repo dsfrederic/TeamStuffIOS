@@ -21,19 +21,22 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ref = Database.database().reference().child("Users")
-        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    var handle : AuthStateDidChangeListenerHandle?
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                // user is signed in
+                print("Already logged in")
+                self.performSegue(withIdentifier: "goHome", sender: self)
+            }
+        }
     }
-    */
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
     
     @IBAction func emailLogInTapped(_ sender: Any) {
         // Get the default auth UI object
@@ -69,15 +72,12 @@ extension LoginViewController: FUIAuthDelegate {
         guard error == nil else{
             return
         }
-        
         self.ref = Database.database().reference().child("Users")
-        
         ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if snapshot.hasChild((authDataResult?.user.uid)!) {
                 self.performSegue(withIdentifier: "goHome", sender: self)
             } else {
                 //User doesn't exist in DB
-                
                 //Add user to db
                 self.user = User(name: (authDataResult?.user.displayName)!, id: (authDataResult?.user.uid)!)
                 let data = try! FirebaseEncoder().encode(self.user)

@@ -38,6 +38,28 @@ class TeamViewController: UIViewController {
             flowLayout.estimatedItemSize = CGSize(width: collectionView.frame.width-20, height: 300)
         }
     }
+    
+    var handle : AuthStateDidChangeListenerHandle?
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                
+            } else {
+                self.performSegue(withIdentifier: "returnToLoginTeam", sender: self)
+            }
+        }
+    }
+    
+    
+    //    Back button, dismissing modal screen, ...
+    //    * saving edits
+    //    * hide keyboard
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
 
 //NAVIGATION
     @IBAction func unwindToMessages(sender: UIStoryboardSegue) {

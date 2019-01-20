@@ -21,7 +21,6 @@ class AdditionalSetupViewController: FormViewController {
     struct FormItems {
         static let profileImage = "profileImage"
         static let teamId = "teamId"
-        static let label = "errorLabel"
     }
 
     override func viewDidLoad() {
@@ -75,7 +74,7 @@ class AdditionalSetupViewController: FormViewController {
             let valuesDictionary = form.values()
             let teamId = valuesDictionary[FormItems.teamId] as? String
             //TODO SET IMAGE
-            ref.child("Teams").observe(DataEventType.value, with: { (snapshot) in
+            ref.child("Teams").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                 if !snapshot.hasChild(teamId!){
                     print("Team not found")
                     let textrow = self.form.rowBy(tag: FormItems.teamId) as! TextRow
