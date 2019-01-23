@@ -71,7 +71,7 @@ class EventsViewController: UITableViewController {
         let calendar = Calendar.current
         let event = events[indexPath.row]
         
-        if((event.playerStatus?.keys.contains((Auth.auth().currentUser?.uid)!))!){
+        if(event.playerStatus != nil && event.playerStatus!.keys.contains(Auth.auth().currentUser!.uid)){
             if(event.playerStatus![(Auth.auth().currentUser?.uid)!] == true){
                 cell.statusLabel.text = "V"
                 cell.statusLabel.textColor = .green
