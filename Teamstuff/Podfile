@@ -7,7 +7,6 @@ target 'Teamstuff' do
 
   # Pods for Teamstuff
 pod 'Eureka'
-pod 'UITextView+Placeholder'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'CodableFirebase'

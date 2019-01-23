@@ -178,7 +178,6 @@ PODS:
   - TwitterCore (3.2.0)
   - TwitterKit (3.4.2):
     - TwitterCore (>= 3.2.0)
-  - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
   - CodableFirebase
@@ -187,7 +186,6 @@ DEPENDENCIES:
   - Firebase/Database
   - FirebaseUI
   - ImageRow (~> 3.0)
-  - "UITextView+Placeholder"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -221,7 +219,6 @@ SPEC REPOS:
     - SDWebImage
     - TwitterCore
     - TwitterKit
-    - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -254,8 +251,7 @@ SPEC CHECKSUMS:
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
-  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 80a2cb61a0cb933eef3fa0104b83bac6b8f29a86
+PODFILE CHECKSUM: 5e342ec6fe6b33cf288c134a9aba11da5fc14b46
 
 COCOAPODS: 1.5.3

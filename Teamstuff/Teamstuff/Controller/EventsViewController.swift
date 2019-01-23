@@ -43,7 +43,6 @@ class EventsViewController: UITableViewController {
         }
     }
     
-    
     //    Back button, dismissing modal screen, ...
     //    * saving edits
     //    * hide keyboard
@@ -71,6 +70,16 @@ class EventsViewController: UITableViewController {
         //set cell values
         let calendar = Calendar.current
         let event = events[indexPath.row]
+        
+        if((event.playerStatus?.keys.contains((Auth.auth().currentUser?.uid)!))!){
+            if(event.playerStatus![(Auth.auth().currentUser?.uid)!] == true){
+                cell.statusLabel.text = "V"
+                cell.statusLabel.textColor = .green
+            } else {
+                cell.statusLabel.text = "X"
+                cell.statusLabel.textColor = .red
+            }
+        }
         cell.event = event
         cell.titleLabel.text = event.title
         cell.dayDateLabel.text = String(calendar.component(.day, from: event.startDate))
@@ -92,8 +101,8 @@ class EventsViewController: UITableViewController {
             
             print("Available action")
             
-            if var playerStatus = currentCell.event!.playerStatus {
-                playerStatus.updateValue(true, forKey: Auth.auth().currentUser!.uid)
+            if (currentCell.event?.playerStatus) != nil {
+                currentCell.event?.playerStatus!.updateValue(true, forKey: Auth.auth().currentUser!.uid)
             } else{
                 currentCell.event?.playerStatus = [:]
                 currentCell.event?.playerStatus!.updateValue(true, forKey: Auth.auth().currentUser!.uid)
@@ -120,8 +129,8 @@ class EventsViewController: UITableViewController {
             
             print("Not Available action")
             
-            if var playerStatus = currentCell.event!.playerStatus {
-                playerStatus.updateValue(false, forKey: Auth.auth().currentUser!.uid)
+            if currentCell.event!.playerStatus != nil {
+                currentCell.event?.playerStatus!.updateValue(false, forKey: Auth.auth().currentUser!.uid)
             } else{
                 currentCell.event?.playerStatus = [:]
                 currentCell.event?.playerStatus!.updateValue(false, forKey: Auth.auth().currentUser!.uid)

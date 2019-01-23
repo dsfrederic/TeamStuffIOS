@@ -109,10 +109,30 @@ class ProfileViewController: FormViewController {
                 if(self.user == nil){
                     return
                 }
+                var alertMessage = ""
+                self.user!.name = valuesDictionary[FormItems.name] as! String
                 
                 self.user!.teamId = teamId!
                 let data = try! FirebaseEncoder().encode(self.user)
-                self.ref.child("Users").child(self.user!.id).setValue(data)
+                
+                self.ref.child("Users").child(self.user!.id).setValue(data) {
+                    (error:Error?, ref:DatabaseReference) in
+                    if let error = error {
+                        print("Data could not be saved: \(error).")
+                        alertMessage = "Update failed"
+                    } else {
+                        print("Data saved successfully!")
+                        alertMessage = "Succesfull update"
+                    }
+                    
+                    let alert = UIAlertController(title: alertMessage, message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                        NSLog("The \"OK\" alert occured.")
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                
             })
         }
     }
@@ -123,6 +143,17 @@ class ProfileViewController: FormViewController {
             do {
                 let user : User = try FirebaseDecoder().decode(User.self, from: snapshot.value!)
                 //            let user : User = snapshot.value as! User
+                
+                let namerow = self.form.rowBy(tag: FormItems.name) as! TextRow
+                namerow.value = user.name
+                namerow.updateCell()
+                
+                let teamrow = self.form.rowBy(tag: FormItems.teamId) as! TextRow
+                teamrow.value = user.teamId
+                teamrow.updateCell()
+                
+                
+                
                 self.user = user
                 teamIdGlobal = user.teamId!
             } catch let error {

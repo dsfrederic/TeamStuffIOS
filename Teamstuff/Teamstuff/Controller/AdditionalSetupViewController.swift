@@ -98,6 +98,7 @@ class AdditionalSetupViewController: FormViewController {
             teamIdGlobal = teamKey!
             let data = try! FirebaseEncoder().encode(user)
             ref.child("Users").child(user.id).setValue(data)
+            ref.child("Teams").child(teamKey!).setValue(true)
         
             self.performSegue(withIdentifier: "goHomeAfterSetup", sender: self)
     }

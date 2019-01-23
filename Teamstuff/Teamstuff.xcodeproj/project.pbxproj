@@ -27,11 +27,11 @@
 		6DC2224521DB9DE500975479 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2224421DB9DE500975479 /* TeamViewController.swift */; };
 		6DC2224721DBB45A00975479 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2224621DBB45A00975479 /* Event.swift */; };
 		6DC2224F21DC940400975479 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC2224E21DC940400975479 /* EventTableViewCell.swift */; };
-		A318FD28B9031D5252C5C206 /* Pods_Teamstuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E49B50635F388864DA5C0E4 /* Pods_Teamstuff.framework */; };
+		FE3881F68C0DC6D4556B8DB1 /* Pods_Teamstuff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FE3B4DE2531D64BAD27100 /* Pods_Teamstuff.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2E49B50635F388864DA5C0E4 /* Pods_Teamstuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teamstuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2893D5A7F11C03A136323B99 /* Pods-Teamstuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teamstuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff.debug.xcconfig"; sourceTree = "<group>"; };
 		6D20E09221E89C1900E8A12E /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		6D2BA54A21ED18E00086B9F4 /* PlayerStatusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatusTableViewController.swift; sourceTree = "<group>"; };
 		6D98D9FF21F1E4AF008B8E5B /* AddMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
@@ -54,8 +54,8 @@
 		6DC2224421DB9DE500975479 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		6DC2224621DBB45A00975479 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6DC2224E21DC940400975479 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		792CA520024C622CCB7FD497 /* Pods-Teamstuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teamstuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff.release.xcconfig"; sourceTree = "<group>"; };
-		D64658014E6DAC3A51D1526C /* Pods-Teamstuff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teamstuff.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff.debug.xcconfig"; sourceTree = "<group>"; };
+		DA39B626E13823784D2EDC15 /* Pods-Teamstuff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teamstuff.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff.release.xcconfig"; sourceTree = "<group>"; };
+		F7FE3B4DE2531D64BAD27100 /* Pods_Teamstuff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teamstuff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,28 +63,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A318FD28B9031D5252C5C206 /* Pods_Teamstuff.framework in Frameworks */,
+				FE3881F68C0DC6D4556B8DB1 /* Pods_Teamstuff.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		21C5091C026F53C1ED963378 /* Pods */ = {
+		27C3A81632FF1133A3712B8B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D64658014E6DAC3A51D1526C /* Pods-Teamstuff.debug.xcconfig */,
-				792CA520024C622CCB7FD497 /* Pods-Teamstuff.release.xcconfig */,
+				2893D5A7F11C03A136323B99 /* Pods-Teamstuff.debug.xcconfig */,
+				DA39B626E13823784D2EDC15 /* Pods-Teamstuff.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		659608FBF3A4A886C05126A8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2E49B50635F388864DA5C0E4 /* Pods_Teamstuff.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6DC221F621DB7BCD00975479 = {
@@ -92,8 +84,8 @@
 			children = (
 				6DC2220121DB7BCD00975479 /* Teamstuff */,
 				6DC2220021DB7BCD00975479 /* Products */,
-				21C5091C026F53C1ED963378 /* Pods */,
-				659608FBF3A4A886C05126A8 /* Frameworks */,
+				27C3A81632FF1133A3712B8B /* Pods */,
+				9E3FB5EF92E8FC5E66E651AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +157,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		9E3FB5EF92E8FC5E66E651AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7FE3B4DE2531D64BAD27100 /* Pods_Teamstuff.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,12 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DC2221321DB7BCE00975479 /* Build configuration list for PBXNativeTarget "Teamstuff" */;
 			buildPhases = (
-				E040772289D705E9C5D5D551 /* [CP] Check Pods Manifest.lock */,
+				7E6FA5C52614FB94E1FF6220 /* [CP] Check Pods Manifest.lock */,
 				6DC221FB21DB7BCD00975479 /* Sources */,
 				6DC221FC21DB7BCD00975479 /* Frameworks */,
 				6DC221FD21DB7BCD00975479 /* Resources */,
-				0403FCB87CA9A278BA5CA21E /* [CP] Embed Pods Frameworks */,
-				F8102B7F1F69EDDE3C743EB7 /* [CP] Copy Pods Resources */,
+				F447856EBC931310C771E48C /* [CP] Embed Pods Frameworks */,
+				6B7E0449015F0E21BBE67CF9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,87 +236,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0403FCB87CA9A278BA5CA21E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/ImageRow/ImageRow.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
-				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageRow.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E040772289D705E9C5D5D551 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Teamstuff-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F8102B7F1F69EDDE3C743EB7 /* [CP] Copy Pods Resources */ = {
+		6B7E0449015F0E21BBE67CF9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -352,6 +272,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E6FA5C52614FB94E1FF6220 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Teamstuff-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F447856EBC931310C771E48C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageRow/ImageRow.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageRow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teamstuff/Pods-Teamstuff-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -520,7 +518,7 @@
 		};
 		6DC2221421DB7BCE00975479 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D64658014E6DAC3A51D1526C /* Pods-Teamstuff.debug.xcconfig */;
+			baseConfigurationReference = 2893D5A7F11C03A136323B99 /* Pods-Teamstuff.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -541,7 +539,7 @@
 		};
 		6DC2221521DB7BCE00975479 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 792CA520024C622CCB7FD497 /* Pods-Teamstuff.release.xcconfig */;
+			baseConfigurationReference = DA39B626E13823784D2EDC15 /* Pods-Teamstuff.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

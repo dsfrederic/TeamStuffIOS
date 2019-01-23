@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CodableFirebase
 
 class EventDetailViewController: UIViewController {
     var event: Event?
@@ -21,7 +22,7 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.ref = Database.database().reference().child("Users")
+        fetchEvent()
         
         if(event != nil){
             self.title = event!.title
@@ -39,6 +40,27 @@ class EventDetailViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchEvent()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ref.removeAllObservers()
+    }
+    
+    func fetchEvent() {
+        self.ref = Database.database().reference().child("Teams").child(teamIdGlobal).child("Events").child(event!.id)
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            guard snapshot.value != nil else { return }
+            do {
+                let model = try FirebaseDecoder().decode(Event.self, from: snapshot.value!)
+                self.event = model
+            } catch let error {
+                print(error)
+            }
+        })
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -48,21 +70,14 @@ class EventDetailViewController: UIViewController {
         if segue.identifier == "playerStatusTable"
         {
             let vc = segue.destination as? PlayerStatusTableViewController
-            vc!.view.translatesAutoresizingMaskIntoConstraints = false
+            
             if(event!.playerStatus != nil){
-                let availablePlayersId = Array(event!.playerStatus!.filter{$0.value == true}.keys)
-                vc!.availablePlayers = getNamesById(identifiers: availablePlayersId)
-                let notAvailablePlayersId = Array(event!.playerStatus!.filter{$0.value == false}.keys)
-                vc!.notAvailablePlayers = getNamesById(identifiers: notAvailablePlayersId)
+                vc!.availablePlayersId = Array(event!.playerStatus!.filter{$0.value == true}.keys)
+                vc!.notAvailablePlayersId = Array(event!.playerStatus!.filter{$0.value == false}.keys)
             }
             
-            
+            vc!.view.translatesAutoresizingMaskIntoConstraints = false
         }
-    }
-    
-    //persistence
-    func getNamesById(identifiers: [String]) -> [String] {
-        return ["TO DO", "TO DO", "TO DO"]
     }
 
 }
