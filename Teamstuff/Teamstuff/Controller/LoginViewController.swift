@@ -11,7 +11,7 @@ import FirebaseUI
 import CodableFirebase
 
 var teamIdGlobal = "Test TEAM ID"
-
+//Source: https://www.youtube.com/watch?v=brpt9Thi6GU
 class LoginViewController: UIViewController {
     var ref: DatabaseReference!
     var user: User!
@@ -66,7 +66,6 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: FUIAuthDelegate {
-    
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         guard error == nil else{

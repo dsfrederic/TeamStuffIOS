@@ -34,6 +34,7 @@ class TeamViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            //Source: https://www.youtube.com/watch?v=sjd1GESBjXM
             //Set estimadItemSize to toggle self sizing
             flowLayout.estimatedItemSize = CGSize(width: collectionView.frame.width-20, height: 300)
         }

@@ -15,6 +15,7 @@ class MessageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var postedDateLabel: UILabel!
     @IBOutlet weak var messageTextLabel: UILabel!
     
+    //Source: https://www.youtube.com/watch?v=sjd1GESBjXM
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         setNeedsLayout()
         layoutIfNeeded()

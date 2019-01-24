@@ -34,11 +34,7 @@ class ProfileViewController: FormViewController {
         fetchUser()
         
         
-        
         form +++ Section("Existing team")
-            //            <<< ImageRow(FormItems.profileImage){
-            //                $0.title = "Profile image (optional)"
-            //            }
             
             <<< TextRow(FormItems.name){
                 $0.title = "Name"

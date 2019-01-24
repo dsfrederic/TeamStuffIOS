@@ -20,6 +20,7 @@ class PlayerStatusTableViewController: UITableViewController {
     var availablePlayersName: [String] = []
     var notAvailablePlayersName: [String] = []
     
+    //Create on demand
     var mySections:[SectionData] {
         if(_mySections == nil){
             _mySections = {

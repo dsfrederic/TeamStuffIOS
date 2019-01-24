@@ -27,7 +27,7 @@ class EventsViewController: UITableViewController {
         ref = Database.database().reference().child("Teams").child(teamIdGlobal).child("Events")
         fetchEvents()
         
-        self.clearsSelectionOnViewWillAppear = false
+        //self.clearsSelectionOnViewWillAppear = false
     }
     
     var handle : AuthStateDidChangeListenerHandle?

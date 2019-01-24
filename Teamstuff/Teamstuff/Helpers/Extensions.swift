@@ -9,6 +9,7 @@
 import Foundation
 import Eureka
 
+
 extension Date {
     var month: String {
         let dateFormatter = DateFormatter()
@@ -23,6 +24,7 @@ extension Date {
     }
 }
 
+//Source: https://stackoverflow.com/questions/27310883/swift-ios-doesrelativedateformatting-have-different-values-besides-today-and/27337951
 extension Date {
     var yearsFromNow:   Int { return Calendar.current.dateComponents([.year],       from: self, to: Date()).year        ?? 0 }
     var monthsFromNow:  Int { return Calendar.current.dateComponents([.month],      from: self, to: Date()).month       ?? 0 }
@@ -44,9 +46,9 @@ extension Date {
     }
 }
 
+//Source: https://github.com/xmartlabs/Eureka/issues/870
 //checks if form is touched or not
 extension Form {
-    
     public func isClean() ->Bool {
         for row in rows {
             if row.wasChanged {
@@ -57,6 +59,7 @@ extension Form {
     }
 }
 
+//Source: https://stackoverflow.com/questions/29578965/how-do-i-populate-two-sections-in-a-tableview-with-two-different-arrays-using-sw/29579021
 struct SectionData {
     let title: String
     let data : [String]
